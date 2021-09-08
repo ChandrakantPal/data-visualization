@@ -1,5 +1,4 @@
 import React from 'react'
-import { arc } from 'd3'
 import './App.css'
 import BackgroundCircle from './components/BackgroundCircle'
 import Eye from './components/Eye'
@@ -14,13 +13,7 @@ const App = () => {
   const eyeOffsetX = 90
   const eyeOffsetY = 100
   const eyeRadius = 40
-  const mouthWidth = 20
-  const mouthRadius = 140
-  const mouthArc: any = arc()
-    .innerRadius(mouthRadius)
-    .outerRadius(mouthRadius + mouthWidth)
-    .startAngle(Math.PI / 2)
-    .endAngle((Math.PI * 3) / 2)
+
   return (
     <div className="App">
       <svg width={width} height={height}>
@@ -31,7 +24,7 @@ const App = () => {
           />
           <Eye radius={eyeRadius} cx={-eyeOffsetX} cy={-eyeOffsetY} />
           <Eye radius={eyeRadius} cx={eyeOffsetX} cy={-eyeOffsetY} />
-          <Mouth mouthArc={mouthArc} />
+          <Mouth mouthWidth={20} mouthRadius={140} />
         </g>
       </svg>
     </div>
