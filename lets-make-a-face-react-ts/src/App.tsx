@@ -3,8 +3,9 @@ import { arc } from 'd3'
 import './App.css'
 import BackgroundCircle from './components/BackgroundCircle'
 import Eye from './components/Eye'
+import Mouth from './components/Mouth'
 
-function App() {
+const App = () => {
   const width = 960
   const height = 500
   const centerX = width / 2
@@ -30,7 +31,7 @@ function App() {
           />
           <Eye radius={eyeRadius} cx={-eyeOffsetX} cy={-eyeOffsetY} />
           <Eye radius={eyeRadius} cx={eyeOffsetX} cy={-eyeOffsetY} />
-          <path d={mouthArc()} />
+          <Mouth mouthArc={mouthArc} />
         </g>
       </svg>
     </div>
