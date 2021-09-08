@@ -2,6 +2,7 @@ import React from 'react'
 import { arc } from 'd3'
 import './App.css'
 import BackgroundCircle from './components/BackgroundCircle'
+import Eye from './components/Eye'
 
 function App() {
   const width = 960
@@ -27,8 +28,8 @@ function App() {
             radius={centerY - strokeWidth / 2}
             strokeWidth={strokeWidth}
           />
-          <circle r={eyeRadius} cx={-eyeOffsetX} cy={-eyeOffsetY} />
-          <circle r={eyeRadius} cx={eyeOffsetX} cy={-eyeOffsetY} />
+          <Eye radius={eyeRadius} cx={-eyeOffsetX} cy={-eyeOffsetY} />
+          <Eye radius={eyeRadius} cx={eyeOffsetX} cy={-eyeOffsetY} />
           <path d={mouthArc()} />
         </g>
       </svg>
