@@ -1,6 +1,11 @@
 import './style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+const url =
+  'https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv'
+
+const fetchText = async () => {
+  const response = await fetch(url)
+  const text = await response.text()
+  console.log(text)
+}
+fetchText()
