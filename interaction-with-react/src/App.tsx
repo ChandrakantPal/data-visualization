@@ -1,5 +1,4 @@
-import React, { MouseEvent, useState } from 'react'
-import logo from './logo.svg'
+import React, { MouseEvent, useState, useCallback } from 'react'
 import './App.css'
 
 function App() {
@@ -9,10 +8,13 @@ function App() {
   const [mousePostion, setMousePostion] =
     useState<{ x: number; y: number }>(initialMousePostion)
   const circleRadius = 30
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientY, clientX } = event
-    setMousePostion({ x: clientX, y: clientY })
-  }
+  const handleMouseMove = useCallback(
+    (event: MouseEvent) => {
+      const { clientY, clientX } = event
+      setMousePostion({ x: clientX, y: clientY })
+    },
+    [setMousePostion]
+  )
   return (
     <div className="App">
       <svg width={width} height={height} onMouseMove={handleMouseMove}>
