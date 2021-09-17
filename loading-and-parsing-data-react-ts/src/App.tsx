@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <pre>{data ? message(data as DSVRowArray<string>) : 'Loading...'}</pre>
+      <pre>{data ? message(data) : 'Loading...'}</pre>
     </div>
   )
 }
