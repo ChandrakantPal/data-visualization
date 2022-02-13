@@ -20,14 +20,7 @@ const App = () => {
     <div className="App">
       <svg>
         {data?.map((d) => (
-          <div
-            key={d['RGB hex value']}
-            style={{
-              backgroundColor: d['RGB hex value'],
-              width: '100vw',
-              height: 4,
-            }}
-          />
+          <path key={d['RGB hex value']} fill={d['RGB hex value']} />
         ))}
       </svg>
     </div>
