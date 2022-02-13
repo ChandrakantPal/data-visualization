@@ -12,11 +12,6 @@ const App = () => {
     csv(csvUrl).then(setData)
   }, [])
 
-  // const message = (messageData: DSVRowArray<string>) => `
-  //   ${Math.round(messageData.length / 1024)}  kb \n${
-  //   messageData.length
-  // } rows\n${messageData.columns.length} columns`
-
   if (!data) {
     return <pre>Loading...</pre>
   }
