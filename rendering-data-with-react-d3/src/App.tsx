@@ -5,8 +5,8 @@ import { DSVRowArray } from 'd3-dsv'
 import { arc } from 'd3'
 
 const App = () => {
-  const width = 960
-  const height = 500
+  const width = window.innerWidth
+  const height = window.innerHeight
   const centerX = width / 2
   const centerY = height / 2
 
@@ -18,11 +18,7 @@ const App = () => {
     csv(csvUrl).then(setData)
   }, [])
 
-  const pieArc: any = arc()
-    .innerRadius(0)
-    .outerRadius(width)
-    .startAngle(Math.PI / 2)
-    .endAngle((Math.PI * 3) / 2)
+  const pieArc: any = arc().innerRadius(0).outerRadius(width)
 
   if (!data) {
     return <pre>Loading...</pre>
@@ -31,13 +27,18 @@ const App = () => {
   return (
     <div className="App">
       <svg width={width} height={height}>
-        {data?.map((d) => (
-          <path
-            key={d['RGB hex value']}
-            fill={d['RGB hex value']}
-            d={pieArc()}
-          />
-        ))}
+        <g transform={`translate(${centerX},${centerY})`}>
+          {data?.map((d, i) => (
+            <path
+              key={d['RGB hex value']}
+              fill={d['RGB hex value']}
+              d={pieArc({
+                startAngle: (i / data.length) * 2 * Math.PI,
+                endAngle: ((i + 1) / data.length) * 2 * Math.PI,
+              })}
+            />
+          ))}
+        </g>
       </svg>
     </div>
   )
