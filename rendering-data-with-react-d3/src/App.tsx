@@ -7,6 +7,8 @@ import { arc } from 'd3'
 const App = () => {
   const width = 960
   const height = 500
+  const centerX = width / 2
+  const centerY = height / 2
 
   const [data, setData] = useState<DSVRowArray<string> | null>(null)
 
