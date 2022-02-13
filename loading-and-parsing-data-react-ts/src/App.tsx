@@ -21,7 +21,16 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  return <div className="App"></div>
+  return (
+    <div className="App">
+      {data?.map((d) => (
+        <div
+          key={d['RGB hex value']}
+          style={{ backgroundColor: d['RGB hex value'] }}
+        />
+      ))}
+    </div>
+  )
 }
 
 export default App
