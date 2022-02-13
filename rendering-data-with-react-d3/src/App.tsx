@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
 import { DSVRowArray } from 'd3-dsv'
+import { arc } from 'd3'
 
 const App = () => {
+  const width = 960
+  const height = 500
+
   const [data, setData] = useState<DSVRowArray<string> | null>(null)
 
   useEffect(() => {
@@ -12,15 +16,25 @@ const App = () => {
     csv(csvUrl).then(setData)
   }, [])
 
+  const pieArc: any = arc()
+    .innerRadius(0)
+    .outerRadius(width)
+    .startAngle(Math.PI / 2)
+    .endAngle((Math.PI * 3) / 2)
+
   if (!data) {
     return <pre>Loading...</pre>
   }
 
   return (
     <div className="App">
-      <svg>
+      <svg width={width} height={height}>
         {data?.map((d) => (
-          <path key={d['RGB hex value']} fill={d['RGB hex value']} />
+          <path
+            key={d['RGB hex value']}
+            fill={d['RGB hex value']}
+            d={pieArc()}
+          />
         ))}
       </svg>
     </div>
