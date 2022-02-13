@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
 import { DSVRowArray } from 'd3-dsv'
-import { arc } from 'd3'
+import { arc, pie } from 'd3'
 
 const App = () => {
   const width = window.innerWidth
@@ -28,7 +28,13 @@ const App = () => {
     <div className="App">
       <svg width={width} height={height}>
         <g transform={`translate(${centerX},${centerY})`}>
-          {data?.map((d, i) => (
+          {pie()
+            .value(1)(data)
+            .map((d) => (
+              <path fill={d.data['RGB hex value']} d={pieArc(d)} />
+            ))}
+          {/* pie chart with arc */}
+          {/* {data?.map((d, i) => (
             <path
               key={d['RGB hex value']}
               fill={d['RGB hex value']}
@@ -37,7 +43,7 @@ const App = () => {
                 endAngle: ((i + 1) / data.length) * 2 * Math.PI,
               })}
             />
-          ))}
+          ))} */}
         </g>
       </svg>
     </div>
