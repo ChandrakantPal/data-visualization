@@ -24,19 +24,19 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
+  const colorPie = pie().value(1)
+
   return (
     <div className="App">
       <svg width={width} height={height}>
         <g transform={`translate(${centerX},${centerY})`}>
-          {pie()
-            .value(1)(data)
-            .map((d) => (
-              <path
-                key={d.data['RGB hex value']}
-                fill={d.data['RGB hex value']}
-                d={pieArc(d)}
-              />
-            ))}
+          {colorPie(data)?.map((d) => (
+            <path
+              key={d.data['RGB hex value']}
+              fill={d.data['RGB hex value']}
+              d={pieArc(d)}
+            />
+          ))}
           {/* pie chart with arc */}
           {/* {data?.map((d, i) => (
             <path
