@@ -26,7 +26,11 @@ const App = () => {
       {data?.map((d) => (
         <div
           key={d['RGB hex value']}
-          style={{ backgroundColor: d['RGB hex value'] }}
+          style={{
+            backgroundColor: d['RGB hex value'],
+            width: '100vw',
+            height: 4,
+          }}
         />
       ))}
     </div>
