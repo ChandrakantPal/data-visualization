@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
 import { DSVRowArray } from 'd3-dsv'
@@ -31,7 +31,11 @@ const App = () => {
           {pie()
             .value(1)(data)
             .map((d) => (
-              <path fill={d.data['RGB hex value']} d={pieArc(d)} />
+              <path
+                key={d.data['RGB hex value']}
+                fill={d.data['RGB hex value']}
+                d={pieArc(d)}
+              />
             ))}
           {/* pie chart with arc */}
           {/* {data?.map((d, i) => (
