@@ -12,22 +12,14 @@ const App = () => {
     csv(csvUrl).then(setData)
   }, [])
 
-  if (!data) {
-    return <pre>Loading...</pre>
-  }
+  const message = (messageData: DSVRowArray<string>) => `
+    ${Math.round(messageData.length / 1024)}  kb \n${
+    messageData.length
+  } rows\n${messageData.columns.length} columns`
 
   return (
     <div className="App">
-      {data?.map((d) => (
-        <div
-          key={d['RGB hex value']}
-          style={{
-            backgroundColor: d['RGB hex value'],
-            width: '100vw',
-            height: 4,
-          }}
-        />
-      ))}
+      <pre>{data ? message(data) : 'Loading...'}</pre>
     </div>
   )
 }
