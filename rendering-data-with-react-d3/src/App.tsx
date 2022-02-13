@@ -18,16 +18,18 @@ const App = () => {
 
   return (
     <div className="App">
-      {data?.map((d) => (
-        <div
-          key={d['RGB hex value']}
-          style={{
-            backgroundColor: d['RGB hex value'],
-            width: '100vw',
-            height: 4,
-          }}
-        />
-      ))}
+      <svg>
+        {data?.map((d) => (
+          <div
+            key={d['RGB hex value']}
+            style={{
+              backgroundColor: d['RGB hex value'],
+              width: '100vw',
+              height: 4,
+            }}
+          />
+        ))}
+      </svg>
     </div>
   )
 }
