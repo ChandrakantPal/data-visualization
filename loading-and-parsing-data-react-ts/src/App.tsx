@@ -17,11 +17,11 @@ const App = () => {
     messageData.length
   } rows\n${messageData.columns.length} columns`
 
-  return (
-    <div className="App">
-      <pre>{data ? message(data) : 'Loading...'}</pre>
-    </div>
-  )
+  if (!data) {
+    return <pre>Loading...</pre>
+  }
+
+  return <div className="App"></div>
 }
 
 export default App
