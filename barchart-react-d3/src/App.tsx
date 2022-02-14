@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
-import { DSVRowArray } from 'd3-dsv'
 import { scaleBand } from 'd3'
 
 const App = () => {
   const width = window.innerWidth
   const height = window.innerHeight
 
-  const [data, setData] = useState<DSVRowArray<string> | null>(null)
+  const [data, setData] = useState<any>(null)
 
   useEffect(() => {
     const csvUrl =
@@ -20,11 +19,15 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
+  const yScale = scaleBand()
+    .domain(data?.map((d: any) => d.Country))
+    .range([0, height])
+
   return (
     <div className="App">
       <svg width={width} height={height}>
-        {data?.map((d) => (
-          <rect x={0} y={} />
+        {data?.map((d: any) => (
+          <rect x={0} y={yScale(d.Countary)} />
         ))}
       </svg>
     </div>
