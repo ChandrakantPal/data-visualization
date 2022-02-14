@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
-import { scaleBand } from 'd3'
+import { scaleBand, scaleLinear } from 'd3'
 
 const App = () => {
+  const csvUrl =
+    'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
   const width = window.innerWidth
   const height = window.innerHeight
 
   const [data, setData] = useState<any>(null)
 
   useEffect(() => {
-    const csvUrl =
-      'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
-    csv(csvUrl).then(setData)
+    const row = (d) => {
+      // converting string to number
+      d.Population = +d['2020']
+      return d
+    }
+    csv(csvUrl, row).then(setData)
   }, [])
 
   if (!data) {
