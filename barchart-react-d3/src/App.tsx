@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
-import { scaleBand, scaleLinear } from 'd3'
+import { scaleBand, scaleLinear, max } from 'd3'
 
 const App = () => {
   const csvUrl =
@@ -12,7 +12,7 @@ const App = () => {
   const [data, setData] = useState<any>(null)
 
   useEffect(() => {
-    const row = (d) => {
+    const row = (d: any) => {
       // converting string to number
       d.Population = +d['2020']
       return d
@@ -28,11 +28,20 @@ const App = () => {
     .domain(data?.map((d: any) => d.Country))
     .range([0, height])
 
+  const xScale = scaleLinear()
+    .domain([0, max(data, (d) => d.Population)])
+    .range([0, width])
+
   return (
     <div className="App">
       <svg width={width} height={height}>
         {data?.map((d: any) => (
-          <rect x={0} y={yScale(d.Countary)} />
+          <rect
+            x={0}
+            y={yScale(d.Countary)}
+            width={xScale(d.Population)}
+            height={yScale.bandwidth()}
+          />
         ))}
       </svg>
     </div>
