@@ -40,14 +40,16 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      {data.map((d: any) => (
-        <rect
-          key={d.Country}
-          y={yScale(d.Country)}
-          width={xScale(d.Population)}
-          height={yScale.bandwidth()}
-        />
-      ))}
+      <g transform={`translate(${margin.left},${margin.top})`}>
+        {data.map((d: any) => (
+          <rect
+            key={d.Country}
+            y={yScale(d.Country)}
+            width={xScale(d.Population)}
+            height={yScale.bandwidth()}
+          />
+        ))}
+      </g>
     </svg>
   )
 }
