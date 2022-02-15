@@ -36,7 +36,7 @@ const App = () => {
 
   const xScale = scaleLinear()
     .domain([0, max(data, (d) => d.Population)])
-    .range([0, width])
+    .range([0, innerWidth])
 
   return (
     <svg width={width} height={height}>
