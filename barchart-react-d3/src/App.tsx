@@ -8,7 +8,7 @@ const csvUrl =
 
 const width = 960
 const height = 500
-const margin = { top: 20, right: 20, bottom: 20, left: 20 }
+const margin = { top: 20, right: 20, bottom: 20, left: 200 }
 
 const App = () => {
   const [data, setData] = useState<any>(null)
