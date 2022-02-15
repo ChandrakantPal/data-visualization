@@ -28,6 +28,7 @@ const App = () => {
   }
 
   const innerHeight = height - margin.top - margin.bottom
+  const innerWidth = width - margin.left - margin.right
 
   const yScale = scaleBand()
     .domain(data.map((d: any) => d.Country))
