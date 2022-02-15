@@ -53,6 +53,11 @@ const App = () => {
             </text>
           </g>
         ))}
+        {yScale.domain().map((tickValue) => (
+          <g key={tickValue} transform={`translate(0,${yScale(tickValue)})`}>
+            <text>{tickValue}</text>
+          </g>
+        ))}
         {data.map((d: any) => (
           <rect
             key={d.Country}
