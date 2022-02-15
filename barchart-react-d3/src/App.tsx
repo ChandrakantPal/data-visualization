@@ -41,6 +41,15 @@ const App = () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
+        {xScale.ticks().map((tickValue) => (
+          <line
+            x1={xScale(tickValue)}
+            y={0}
+            x2={xScale(tickValue)}
+            y2={innerHeight}
+            stroke="black"
+          />
+        ))}
         {data.map((d: any) => (
           <rect
             key={d.Country}
