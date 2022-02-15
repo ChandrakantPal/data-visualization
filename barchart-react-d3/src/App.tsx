@@ -27,7 +27,7 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  console.log(data[0])
+  const innerHeight = height - margin.top - margin.bottom
 
   const yScale = scaleBand()
     .domain(data.map((d: any) => d.Country))
