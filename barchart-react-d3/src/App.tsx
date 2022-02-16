@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import { csv } from 'd3-fetch'
 import './App.css'
 import { scaleBand, scaleLinear, max } from 'd3'
 import { useData } from './utils/useData'
