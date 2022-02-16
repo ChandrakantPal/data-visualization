@@ -2,6 +2,7 @@ import './App.css'
 import { scaleBand, scaleLinear, max } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
+import AxisLeft from './components/AxisLeft'
 
 const csvUrl =
   'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
@@ -32,17 +33,7 @@ const App = () => {
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} />
-        {yScale.domain().map((tickValue) => (
-          <text
-            key={tickValue}
-            style={{ textAnchor: 'end' }}
-            dy=".32em"
-            x={-3}
-            y={yScale(tickValue) + yScale.bandwidth() / 2}
-          >
-            {tickValue}
-          </text>
-        ))}
+        <AxisLeft yScale={yScale} />
         {data.map((d: any) => (
           <rect
             key={d.Country}
