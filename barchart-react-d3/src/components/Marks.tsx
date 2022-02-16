@@ -1,15 +1,17 @@
 import { FC } from 'react'
 
-const Marks: FC<{ data: any; yScale: any; xScale: any }> = ({
-  data,
-  xScale,
-  yScale,
-}) =>
+const Marks: FC<{
+  data: any
+  yScale: any
+  xScale: any
+  xValue: any
+  yValue: any
+}> = ({ data, xScale, yScale, xValue, yValue }) =>
   data.map((d: any) => (
     <rect
-      key={d.Country}
-      y={yScale(d.Country)}
-      width={xScale(d.Population)}
+      key={yValue(d)}
+      y={yScale(yValue(d))}
+      width={xScale(xValue(d))}
       height={yScale.bandwidth()}
     />
   ))
