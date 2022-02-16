@@ -22,12 +22,13 @@ const App = () => {
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
-  const yScale = scaleBand()
-    .domain(data.map((d: any) => d.Country))
-    .range([0, innerHeight])
+  const yValue = (d: any) => d.Country
+  const xValue = (d: any) => d.Population
+
+  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight])
 
   const xScale = scaleLinear()
-    .domain([0, max(data, (d) => d.Population)])
+    .domain([0, max(data, xValue)])
     .range([0, innerWidth])
 
   return (
