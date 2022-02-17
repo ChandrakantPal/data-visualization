@@ -10,7 +10,8 @@ const csvUrl =
 
 const width = 960
 const height = 500
-const margin = { top: 20, right: 30, bottom: 40, left: 220 }
+const margin = { top: 20, right: 30, bottom: 60, left: 220 }
+const xAxisLabelOffset = 50
 
 const App = () => {
   const data = useData(csvUrl)
@@ -42,7 +43,7 @@ const App = () => {
         <text
           className="axis-label"
           x={innerWidth / 2}
-          y={innerHeight + 35}
+          y={innerHeight + xAxisLabelOffset}
           textAnchor="middle"
         >
           Population in 2020
