@@ -62,6 +62,7 @@ const App = () => {
           yScale={yScale}
           xValue={xValue}
           yValue={yValue}
+          tooltipFormat={xAxisTickFormat}
         />
       </g>
     </svg>
