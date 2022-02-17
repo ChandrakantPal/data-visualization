@@ -9,6 +9,7 @@ const Marks: FC<{
 }> = ({ data, xScale, yScale, xValue, yValue }) =>
   data.map((d: any) => (
     <rect
+      className="mark"
       key={yValue(d)}
       y={yScale(yValue(d))}
       width={xScale(xValue(d))}
