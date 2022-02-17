@@ -10,7 +10,7 @@ const csvUrl =
 
 const width = 960
 const height = 500
-const margin = { top: 20, right: 30, bottom: 60, left: 220 }
+const margin = { top: 20, right: 30, bottom: 65, left: 220 }
 const xAxisLabelOffset = 50
 
 const App = () => {
