@@ -1,5 +1,5 @@
 import './App.css'
-import { scaleBand, scaleLinear, max } from 'd3'
+import { scaleBand, scaleLinear, max, format } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -38,7 +38,11 @@ const App = () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <AxisBottom xScale={xScale} innerHeight={innerHeight} />
+        <AxisBottom
+          xScale={xScale}
+          innerHeight={innerHeight}
+          tickFormat={(n: number) => format('.2s')(n).replace('G', 'B')}
+        />
         <AxisLeft yScale={yScale} />
         <text
           className="axis-label"
