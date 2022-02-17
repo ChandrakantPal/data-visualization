@@ -26,6 +26,8 @@ const App = () => {
   const yValue = (d: any) => d.Country
   const xValue = (d: any) => d.Population
 
+  const xAxisTickFormat = (n: number) => format('.2s')(n).replace('G', 'B')
+
   const yScale = scaleBand()
     .domain(data.map(yValue))
     .range([0, innerHeight])
@@ -41,7 +43,7 @@ const App = () => {
         <AxisBottom
           xScale={xScale}
           innerHeight={innerHeight}
-          tickFormat={(n: number) => format('.2s')(n).replace('G', 'B')}
+          tickFormat={xAxisTickFormat}
         />
         <AxisLeft yScale={yScale} />
         <text
