@@ -1,4 +1,3 @@
-import { ScaleLinear } from 'd3'
 import { FC } from 'react'
 
 const AxisBottom: FC<{
@@ -6,8 +5,12 @@ const AxisBottom: FC<{
   innerHeight: number
 }> = ({ xScale, innerHeight }) =>
   xScale.ticks().map((tickValue: any) => (
-    <g key={tickValue} transform={`translate(${xScale(tickValue)},0)`}>
-      <line y2={innerHeight} stroke="black" />
+    <g
+      className="tick"
+      key={tickValue}
+      transform={`translate(${xScale(tickValue)},0)`}
+    >
+      <line y2={innerHeight} />
       <text style={{ textAnchor: 'middle' }} y={innerHeight + 3} dy=".71em">
         {tickValue}
       </text>
