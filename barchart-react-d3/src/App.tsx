@@ -39,6 +39,14 @@ const App = () => {
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} />
         <AxisLeft yScale={yScale} />
+        <text
+          className="axis-label"
+          x={innerWidth / 2}
+          y={innerHeight + 35}
+          textAnchor="middle"
+        >
+          Population in 2020
+        </text>
         <Marks
           data={data}
           xScale={xScale}
