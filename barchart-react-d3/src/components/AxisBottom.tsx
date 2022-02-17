@@ -3,7 +3,8 @@ import { FC } from 'react'
 const AxisBottom: FC<{
   xScale: any
   innerHeight: number
-}> = ({ xScale, innerHeight }) =>
+  tickFormat: (n: number) => string
+}> = ({ xScale, innerHeight, tickFormat }) =>
   xScale.ticks().map((tickValue: any) => (
     <g
       className="tick"
@@ -12,7 +13,7 @@ const AxisBottom: FC<{
     >
       <line y2={innerHeight} />
       <text style={{ textAnchor: 'middle' }} y={innerHeight + 3} dy=".71em">
-        {tickValue}
+        {tickFormat(tickValue)}
       </text>
     </g>
   ))
