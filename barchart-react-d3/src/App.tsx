@@ -25,7 +25,10 @@ const App = () => {
   const yValue = (d: any) => d.Country
   const xValue = (d: any) => d.Population
 
-  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight])
+  const yScale = scaleBand()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .paddingInner(0.15)
 
   const xScale = scaleLinear()
     .domain([0, max(data, xValue)])
