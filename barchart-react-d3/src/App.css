@@ -9,3 +9,8 @@
 .mark {
   fill: #137b80;
 }
+
+.axis-label {
+  font-size: 2.5em;
+  fill: #635f5d;
+}
