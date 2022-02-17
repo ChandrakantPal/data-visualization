@@ -26,7 +26,9 @@ const App = () => {
   const yValue = (d: any) => d.Country
   const xValue = (d: any) => d.Population
 
-  const xAxisTickFormat = (n: number) => format('.2s')(n).replace('G', 'B')
+  const siFormat = format('.2s')
+  const xAxisTickFormat = (tickValue: number) =>
+    siFormat(tickValue).replace('G', 'B')
 
   const yScale = scaleBand()
     .domain(data.map(yValue))
