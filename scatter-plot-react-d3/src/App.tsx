@@ -37,6 +37,7 @@ const App = () => {
   const xScale = scaleLinear()
     .domain(extent(data, xValue))
     .range([0, innerWidth])
+    .nice()
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
