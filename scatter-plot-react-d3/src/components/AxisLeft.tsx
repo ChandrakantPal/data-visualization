@@ -5,14 +5,13 @@ const AxisLeft: FC<{ yScale: any; innerWidth: number }> = ({
   innerWidth,
 }) =>
   yScale.ticks().map((tickValue: any) => (
-    <g className="tick" key={tickValue}>
+    <g
+      className="tick"
+      key={tickValue}
+      transform={`translate(0,${yScale(tickValue)})`}
+    >
       <line x2={innerWidth} />
-      <text
-        style={{ textAnchor: 'end' }}
-        dy=".32em"
-        x={-3}
-        y={yScale(tickValue)}
-      >
+      <text style={{ textAnchor: 'end' }} dy=".32em" x={-3}>
         {tickValue}
       </text>
     </g>
