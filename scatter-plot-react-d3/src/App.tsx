@@ -12,6 +12,7 @@ const width = 960
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 220 }
 const xAxisLabelOffset = 50
+const yAxisLabelOffset = 50
 
 const App = () => {
   const data = useData(csvUrl)
@@ -25,7 +26,9 @@ const App = () => {
 
   const xValue = (d: any) => d.sepal_length
   const xAxisLabel = 'Sepal Length'
+
   const yValue = (d: any) => d.sepal_width
+  const yAxisLabel = 'Sepal Width'
 
   const siFormat = format('.2s')
   const xAxisTickFormat = (tickValue: number) =>
@@ -47,6 +50,15 @@ const App = () => {
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
         />
+        <text
+          className="axis-label"
+          textAnchor="middle"
+          transform={`translate(${-yAxisLabelOffset},${
+            innerHeight / 2
+          })rotate(-90)`}
+        >
+          {yAxisLabel}
+        </text>
         <AxisLeft yScale={yScale} innerWidth={innerWidth} />
         <text
           className="axis-label"
