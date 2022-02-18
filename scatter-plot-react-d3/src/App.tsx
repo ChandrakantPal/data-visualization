@@ -46,7 +46,7 @@ const App = () => {
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
         />
-        <AxisLeft yScale={yScale} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} />
         <text
           className="axis-label"
           x={innerWidth / 2}
