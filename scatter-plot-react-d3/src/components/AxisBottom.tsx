@@ -4,7 +4,8 @@ const AxisBottom: FC<{
   xScale: any
   innerHeight: number
   tickFormat: (n: number) => string
-}> = ({ xScale, innerHeight, tickFormat }) =>
+  tickOffset?: number
+}> = ({ xScale, innerHeight, tickFormat, tickOffset = 3 }) =>
   xScale.ticks().map((tickValue: any) => (
     <g
       className="tick"
@@ -12,7 +13,11 @@ const AxisBottom: FC<{
       transform={`translate(${xScale(tickValue)},0)`}
     >
       <line y2={innerHeight} />
-      <text style={{ textAnchor: 'middle' }} y={innerHeight + 3} dy=".71em">
+      <text
+        style={{ textAnchor: 'middle' }}
+        y={innerHeight + tickOffset}
+        dy=".71em"
+      >
         {tickFormat(tickValue)}
       </text>
     </g>
