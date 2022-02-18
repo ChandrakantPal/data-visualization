@@ -7,13 +7,22 @@ const Marks: FC<{
   xValue: any
   yValue: any
   tooltipFormat: any
-}> = ({ data, xScale, yScale, xValue, yValue, tooltipFormat }) =>
+  circleRadius?: number
+}> = ({
+  data,
+  xScale,
+  yScale,
+  xValue,
+  yValue,
+  tooltipFormat,
+  circleRadius = 10,
+}) =>
   data.map((d: any) => (
     <circle
       className="mark"
       cx={xScale(xValue(d))}
       cy={yScale(yValue(d))}
-      r={10}
+      r={circleRadius}
     >
       <title>{tooltipFormat(xValue(d))}</title>
     </circle>
