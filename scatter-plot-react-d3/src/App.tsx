@@ -61,7 +61,7 @@ const App = () => {
         >
           {yAxisLabel}
         </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={5} />
         <text
           className="axis-label"
           x={innerWidth / 2}
