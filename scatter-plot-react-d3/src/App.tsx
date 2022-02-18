@@ -50,6 +50,7 @@ const App = () => {
           xScale={xScale}
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
+          tickOffset={5}
         />
         <text
           className="axis-label"
