@@ -24,6 +24,7 @@ const App = () => {
   const innerWidth = width - margin.left - margin.right
 
   const xValue = (d: any) => d.sepal_length
+  const xAxisLabel = 'Sepal Length'
   const yValue = (d: any) => d.sepal_width
 
   const siFormat = format('.2s')
@@ -53,7 +54,7 @@ const App = () => {
           y={innerHeight + xAxisLabelOffset}
           textAnchor="middle"
         >
-          Population in 2020
+          {xAxisLabel}
         </text>
         <Marks
           data={data}
