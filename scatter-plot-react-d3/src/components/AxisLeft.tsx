@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const AxisLeft: FC<{ yScale: any }> = ({ yScale }) =>
-  yScale.domain().map((tickValue: any) => (
+  yScale.ticks().map((tickValue: any) => (
     <g className="tick" key={tickValue}>
       <text
         style={{ textAnchor: 'end' }}
