@@ -1,5 +1,5 @@
 import './App.css'
-import { scaleLinear, max, format, min, extent } from 'd3'
+import { scaleLinear, scaleTime, timeFormat, extent } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -30,11 +30,9 @@ const App = () => {
   const yValue = (d: any) => d.temperature
   const yAxisLabel = 'Temperature'
 
-  const siFormat = format('.2s')
-  const xAxisTickFormat = (tickValue: number) =>
-    siFormat(tickValue).replace('G', 'B')
+  const xAxisTickFormat = timeFormat('%a')
 
-  const xScale = scaleLinear()
+  const xScale = scaleTime()
     .domain(extent(data, xValue))
     .range([0, innerWidth])
     .nice()
@@ -51,7 +49,7 @@ const App = () => {
           xScale={xScale}
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
-          tickOffset={5}
+          tickOffset={7}
         />
         <text
           className="axis-label"
