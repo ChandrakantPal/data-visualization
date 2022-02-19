@@ -24,11 +24,11 @@ const App = () => {
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
-  const xValue = (d: any) => d.sepal_length
-  const xAxisLabel = 'Sepal Length'
+  const xValue = (d: any) => d.timestamp
+  const xAxisLabel = 'Time'
 
-  const yValue = (d: any) => d.sepal_width
-  const yAxisLabel = 'Sepal Width'
+  const yValue = (d: any) => d.temperature
+  const yAxisLabel = 'Temperature'
 
   const siFormat = format('.2s')
   const xAxisTickFormat = (tickValue: number) =>
