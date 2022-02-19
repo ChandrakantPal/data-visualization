@@ -3,7 +3,7 @@ import { FC } from 'react'
 const AxisBottom: FC<{
   xScale: any
   innerHeight: number
-  tickFormat: (n: number) => string
+  tickFormat: (date: Date) => string
   tickOffset?: number
 }> = ({ xScale, innerHeight, tickFormat, tickOffset = 3 }) =>
   xScale.ticks().map((tickValue: any) => (
