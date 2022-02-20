@@ -1,4 +1,4 @@
-import { line } from 'd3'
+import { line, curveNatural } from 'd3'
 import { FC } from 'react'
 
 const Marks: FC<{
@@ -21,13 +21,15 @@ const Marks: FC<{
   data.map((d: any) => (
     <g className="marks">
       <path
+        fill="none"
         d={`${line()
           .x((d) => xScale(xValue(d)))
-          .y((d) => yScale(yValue(d)))(data)}`}
+          .y((d) => yScale(yValue(d)))
+          .curve(curveNatural)(data)}`}
       />
-      <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
+      {/* <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
         <title>{tooltipFormat(xValue(d))}</title>
-      </circle>
+      </circle> */}
     </g>
   ))
 
