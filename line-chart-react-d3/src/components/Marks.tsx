@@ -1,3 +1,4 @@
+import { line } from 'd3'
 import { FC } from 'react'
 
 const Marks: FC<{
@@ -18,14 +19,23 @@ const Marks: FC<{
   circleRadius = 10,
 }) =>
   data.map((d: any) => (
-    <circle
-      className="mark"
-      cx={xScale(xValue(d))}
-      cy={yScale(yValue(d))}
-      r={circleRadius}
-    >
-      <title>{tooltipFormat(xValue(d))}</title>
-    </circle>
+    <>
+      <path
+        fill="none"
+        stroke="black"
+        d={`${line()
+          .x((d) => xScale(xValue(d)))
+          .y((d) => yScale(yValue(d)))(data)}`}
+      />
+      <circle
+        className="mark"
+        cx={xScale(xValue(d))}
+        cy={yScale(yValue(d))}
+        r={circleRadius}
+      >
+        <title>{tooltipFormat(xValue(d))}</title>
+      </circle>
+    </>
   ))
 
 export default Marks
