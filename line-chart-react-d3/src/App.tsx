@@ -12,7 +12,7 @@ const width = 960
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
-const yAxisLabelOffset = 40
+const yAxisLabelOffset = 45
 
 const App = () => {
   const data = useData(csvUrl)
@@ -60,7 +60,7 @@ const App = () => {
         >
           {yAxisLabel}
         </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={5} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
         <text
           className="axis-label"
           x={innerWidth / 2}
