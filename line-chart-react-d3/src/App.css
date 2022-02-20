@@ -6,8 +6,15 @@
   fill: #635f5d;
 }
 
-.mark {
+.marks circle {
   fill: #137b80;
+}
+
+.marks path {
+  stroke: #137b80;
+  stroke-width: 4;
+  fill: none;
+  stroke-linejoin: round;
 }
 
 .axis-label {
