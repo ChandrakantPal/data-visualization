@@ -10,3 +10,7 @@ pre {
   fill: #137b80;
   stroke: #c0c0bb;
 }
+.marks .sphere {
+  fill: #ececec;
+  /* stroke: #c0c0bb; */
+}
