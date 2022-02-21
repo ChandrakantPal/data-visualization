@@ -17,20 +17,22 @@ const Marks: FC<{
   yValue,
   tooltipFormat,
   circleRadius = 10,
-}) =>
-  data.map((d: any) => (
-    <g className="marks">
-      <path
-        fill="none"
-        d={`${line()
-          .x((d) => xScale(xValue(d)))
-          .y((d) => yScale(yValue(d)))
-          .curve(curveNatural)(data)}`}
-      />
-      {/* <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
+}) => (
+  <g className="marks">
+    <path
+      fill="none"
+      stroke="black"
+      d={`${line()
+        .x((d) => xScale(xValue(d)))
+        .y((d) => yScale(yValue(d)))
+        .curve(curveNatural)(data)}`}
+    />
+    {data.map((d: any) => (
+      <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
         <title>{tooltipFormat(xValue(d))}</title>
-      </circle> */}
-    </g>
-  ))
+      </circle>
+    ))}
+  </g>
+)
 
 export default Marks
