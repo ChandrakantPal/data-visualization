@@ -1,15 +1,21 @@
+import { geoEqualEarth, geoPath } from 'd3'
 import { FC } from 'react'
+
+const projection = geoEqualEarth()
+const path = geoPath(projection)
 
 const Marks: FC<{
   data: any
-}> = ({ data }) =>
-  data.map((d: any) => (
+}> = ({ data: { land, interiors } }) => {
+  console.log({ land, interiors })
+
+  return (
     <g className="marks">
-      <path d={``} />
-      {/* <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
-        <title>{tooltipFormat(xValue(d))}</title>
-      </circle> */}
+      {land?.features?.map((d: any) => (
+        <path d={`${path(d)}`} />
+      ))}
     </g>
-  ))
+  )
+}
 
 export default Marks
