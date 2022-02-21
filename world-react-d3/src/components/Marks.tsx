@@ -1,8 +1,9 @@
-import { geoEqualEarth, geoPath } from 'd3'
+import { geoNaturalEarth1, geoPath, geoGraticule } from 'd3'
 import { FC } from 'react'
 
-const projection = geoEqualEarth()
+const projection = geoNaturalEarth1()
 const path = geoPath(projection)
+const graticule = geoGraticule()
 
 const Marks: FC<{
   data: any
@@ -12,9 +13,11 @@ const Marks: FC<{
   return (
     <g className="marks">
       <path className="sphere" d={`${path({ type: 'Sphere' })}`} />
-      {land?.features?.map((d: any) => (
-        <path className="feature" d={`${path(d)}`} />
+      <path className="graticules" d={`${path(graticule())}`} />
+      {land.features.map((feature: any) => (
+        <path className="land" d={`${path(feature)}`} />
       ))}
+      {/* <path className="interiors" d={`${path(interiors)}`} /> */}
     </g>
   )
 }
