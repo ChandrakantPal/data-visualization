@@ -11,8 +11,9 @@ const Marks: FC<{
 
   return (
     <g className="marks">
+      <path className="sphere" d={`${path({ type: 'Sphere' })}`} />
       {land?.features?.map((d: any) => (
-        <path d={`${path(d)}`} />
+        <path className="feature" d={`${path(d)}`} />
       ))}
     </g>
   )
