@@ -17,9 +17,7 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      <g transform={`translate(${margin.left},${margin.top})`}>
-        <Marks data={data} />
-      </g>
+      <Marks data={data} />
     </svg>
   )
 }
