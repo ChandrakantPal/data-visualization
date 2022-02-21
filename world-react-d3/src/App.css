@@ -6,11 +6,17 @@ body {
 pre {
   font-size: 7em;
 }
-.marks .feature {
+.marks .land {
   fill: #137b80;
-  stroke: #c0c0bb;
 }
 .marks .sphere {
   fill: #ececec;
-  /* stroke: #c0c0bb; */
+}
+.marks .interiors {
+  fill: none;
+  stroke: #43a4a8;
+}
+.marks .graticules {
+  fill: none;
+  stroke: #dadada;
 }
