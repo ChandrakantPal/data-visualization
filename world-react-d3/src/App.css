@@ -6,7 +6,7 @@ body {
 pre {
   font-size: 7em;
 }
-.marks path {
+.marks .feature {
   fill: #137b80;
   stroke: #c0c0bb;
 }
