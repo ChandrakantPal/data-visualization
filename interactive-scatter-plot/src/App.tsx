@@ -11,7 +11,8 @@ const csvUrl =
   'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv'
 
 const width = 960
-const height = 500
+const menuHeight = 75
+const height = 500 - menuHeight
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
 const yAxisLabelOffset = 45
