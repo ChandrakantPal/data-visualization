@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const Dropdown: FC<{
-  options: [{ value: string; label: string }]
+  options: { value: string; label: string }[]
   id: string
   selectedValue: string
   onSelectedValueChange: (value: string) => void
