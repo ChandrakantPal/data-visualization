@@ -25,6 +25,15 @@ const attributes = [
   { value: 'species', label: 'Species' },
 ]
 
+// not using array.find() because of browser support issue
+const getLabel = (value: string) => {
+  for (let i = 0; i < attributes.length; i++) {
+    if (attributes[i].value === value) {
+      return attributes[i].label
+    }
+  }
+}
+
 const App = () => {
   const data = useData(csvUrl)
   const initialXAttribute = 'sepal_length'
@@ -33,10 +42,10 @@ const App = () => {
   const [yAttribute, setYAttribute] = useState(initialYAttribute)
 
   const xValue = (d: any) => d[xAttribute]
-  const xAxisLabel = 'Sepal Length'
+  const xAxisLabel = getLabel(xAttribute)
 
   const yValue = (d: any) => d[yAttribute]
-  const yAxisLabel = 'Sepal Width'
+  const yAxisLabel = getLabel(yAttribute)
 
   if (!data) {
     return <pre>Loading...</pre>
