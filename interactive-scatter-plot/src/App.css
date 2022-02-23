@@ -10,7 +10,8 @@
   fill: #137b80;
 }
 
-.axis-label {
+.axis-label,
+.dropdown-label {
   font-size: 2.5em;
   fill: #635f5d;
 }
@@ -18,8 +19,4 @@
 .Dropdown-root {
   width: 300px;
   display: inline-block;
-}
-
-.dropdown-label {
-  font-size: 3em;
 }
