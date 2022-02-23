@@ -21,3 +21,7 @@
   width: 300px;
   display: inline-block;
 }
+
+.Dropdown-menu {
+  max-height: 400px;
+}
