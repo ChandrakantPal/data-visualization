@@ -1,3 +1,4 @@
+import 'react-dropdown/style.css'
 import './App.css'
 import { scaleLinear, format, extent } from 'd3'
 import { useData } from './utils/useData'
@@ -6,6 +7,7 @@ import AxisLeft from './components/AxisLeft'
 import Marks from './components/Marks'
 import Dropdown from './components/Dropdown'
 import { useState } from 'react'
+import ReactDropdown from 'react-dropdown'
 
 const csvUrl =
   'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv'
@@ -69,19 +71,17 @@ const App = () => {
 
   return (
     <>
-      <label htmlFor="x-select">X:</label>
-      <Dropdown
-        id="x-select"
+      <span className="dropdown-label">X:</span>
+      <ReactDropdown
         options={attributes}
-        selectedValue={xAttribute}
-        onSelectedValueChange={setXAttribute}
+        value={xAttribute}
+        onChange={({ value }) => setXAttribute(value)}
       />
-      <label htmlFor="y-select">Y:</label>
-      <Dropdown
-        id="y-select"
+      <span className="dropdown-label">Y:</span>
+      <ReactDropdown
         options={attributes}
-        selectedValue={yAttribute}
-        onSelectedValueChange={setYAttribute}
+        value={yAttribute}
+        onChange={({ value }) => setYAttribute(value)}
       />
       <svg width={width} height={height}>
         <g transform={`translate(${margin.left},${margin.top})`}>
