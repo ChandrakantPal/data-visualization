@@ -5,7 +5,7 @@ import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
 import Marks from './components/Marks'
-import Dropdown from './components/Dropdown'
+// import Dropdown from './components/Dropdown'
 import { useState } from 'react'
 import ReactDropdown from 'react-dropdown'
 
