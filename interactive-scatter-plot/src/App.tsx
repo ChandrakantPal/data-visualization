@@ -72,13 +72,13 @@ const App = () => {
   return (
     <>
       <div className="menus-container">
-        <span className="dropdown-label">X:</span>
+        <span className="dropdown-label">X</span>
         <ReactDropdown
           options={attributes}
           value={xAttribute}
           onChange={({ value }) => setXAttribute(value)}
         />
-        <span className="dropdown-label">Y:</span>
+        <span className="dropdown-label">Y</span>
         <ReactDropdown
           options={attributes}
           value={yAttribute}
