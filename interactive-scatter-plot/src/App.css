@@ -9,7 +9,11 @@
 .mark {
   fill: #137b80;
 }
-
+.menus-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .axis-label,
 .dropdown-label {
   font-size: 2.5em;
