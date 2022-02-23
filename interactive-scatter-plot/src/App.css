@@ -21,6 +21,11 @@
   color: #635f5d;
 }
 
+.dropdown-label {
+  margin-left: 50px;
+  margin-right: 5px;
+}
+
 .Dropdown-root {
   width: 300px;
   display: inline-block;
