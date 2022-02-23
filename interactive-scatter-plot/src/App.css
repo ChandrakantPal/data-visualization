@@ -15,14 +15,11 @@
   fill: #635f5d;
 }
 
-label,
-select {
-  font-size: 3em;
-}
-select option {
-  font-size: 1rem;
-}
 .Dropdown-root {
   width: 300px;
   display: inline-block;
+}
+
+.dropdown-label {
+  font-size: 3em;
 }
