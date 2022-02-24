@@ -71,6 +71,10 @@ const App = () => {
     .domain(extent(data, yValue))
     .range([0, innerHeight])
 
+  const colorScale = scaleOrdinal()
+    .domain(data.map(colorValue))
+    .range(['#E6842A', '#137B80', '#8E6C8A'])
+
   return (
     <>
       <div className="menus-container">
