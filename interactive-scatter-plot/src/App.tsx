@@ -1,6 +1,6 @@
 import 'react-dropdown/style.css'
 import './App.css'
-import { scaleLinear, format, extent } from 'd3'
+import { scaleLinear, format, extent, scaleOrdinal } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -48,6 +48,8 @@ const App = () => {
 
   const yValue = (d: any) => d[yAttribute]
   const yAxisLabel = getLabel(yAttribute)
+
+  const colorValue = (d: any) => d.species
 
   if (!data) {
     return <pre>Loading...</pre>
