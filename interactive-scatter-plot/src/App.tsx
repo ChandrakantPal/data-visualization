@@ -123,6 +123,8 @@ const App = () => {
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            colorScale={colorScale}
+            colorValue={colorValue}
             tooltipFormat={xAxisTickFormat}
             circleRadius={7}
           />
