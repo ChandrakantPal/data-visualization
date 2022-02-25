@@ -119,7 +119,12 @@ const App = () => {
             {xAxisLabel}
           </text>
           <g transform={`translate(${innerWidth + 50})`}>
-            <ColorLegend colorScale={colorScale} />
+            <ColorLegend
+              colorScale={colorScale}
+              tickSpacing={20}
+              tickSize={10}
+              tickTextOffset={20}
+            />
           </g>
           <Marks
             data={data}
