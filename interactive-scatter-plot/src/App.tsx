@@ -52,6 +52,8 @@ const App = () => {
 
   const colorValue = (d: any) => d.species
 
+  const circleRadius = 7
+
   if (!data) {
     return <pre>Loading...</pre>
   }
@@ -122,7 +124,7 @@ const App = () => {
             <ColorLegend
               colorScale={colorScale}
               tickSpacing={20}
-              tickSize={10}
+              tickSize={circleRadius}
               tickTextOffset={20}
             />
           </g>
@@ -135,7 +137,7 @@ const App = () => {
             colorScale={colorScale}
             colorValue={colorValue}
             tooltipFormat={xAxisTickFormat}
-            circleRadius={7}
+            circleRadius={circleRadius}
           />
         </g>
       </svg>
