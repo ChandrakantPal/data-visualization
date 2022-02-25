@@ -16,7 +16,7 @@ const csvUrl =
 const width = 960
 const menuHeight = 75
 const height = 500 - menuHeight
-const margin = { top: 20, right: 30, bottom: 65, left: 90 }
+const margin = { top: 20, right: 200, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
 const yAxisLabelOffset = 45
 
