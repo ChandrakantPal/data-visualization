@@ -51,6 +51,7 @@ const App = () => {
   const yAxisLabel = getLabel(yAttribute)
 
   const colorValue = (d: any) => d.species
+  const colorLegendLabel = 'Species'
 
   const circleRadius = 7
 
@@ -120,7 +121,10 @@ const App = () => {
           >
             {xAxisLabel}
           </text>
-          <g transform={`translate(${innerWidth + 50})`}>
+          <g transform={`translate(${innerWidth + 50},60)`}>
+            <text className="axis-label" x={35} y={-25} textAnchor="middle">
+              {colorLegendLabel}
+            </text>
             <ColorLegend
               colorScale={colorScale}
               tickSpacing={20}
