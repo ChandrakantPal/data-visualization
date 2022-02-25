@@ -8,7 +8,7 @@ const ColorLegend: FC<{
   colorScale.domain().map((domainValue: string, i: number) => (
     <g key={domainValue} transform={`translate(0,${i * tickSpacing})`}>
       <circle fill={colorScale(domainValue)} r={tickSize} />
-      <text>{domainValue}</text>
+      <text dy=".32em">{domainValue}</text>
     </g>
   ))
 
