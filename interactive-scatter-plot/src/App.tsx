@@ -8,6 +8,7 @@ import Marks from './components/Marks'
 // import Dropdown from './components/Dropdown'
 import { useState } from 'react'
 import ReactDropdown from 'react-dropdown'
+import ColorLegend from './components/ColorLegend'
 
 const csvUrl =
   'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv'
@@ -117,6 +118,7 @@ const App = () => {
           >
             {xAxisLabel}
           </text>
+          <ColorLegend colorScale={colorScale} />
           <Marks
             data={data}
             xScale={xScale}
