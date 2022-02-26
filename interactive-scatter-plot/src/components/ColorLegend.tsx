@@ -11,6 +11,9 @@ const ColorLegend: FC<{
       className="tick"
       key={domainValue}
       transform={`translate(0,${i * tickSpacing})`}
+      onMouseEnter={() => {
+        console.log(domainValue)
+      }}
     >
       <circle fill={colorScale(domainValue)} r={tickSize} />
       <text x={tickTextOffset} dy=".32em">
