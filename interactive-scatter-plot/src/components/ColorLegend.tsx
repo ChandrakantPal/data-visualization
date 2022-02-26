@@ -6,12 +6,14 @@ const ColorLegend: FC<{
   tickSize?: number
   tickTextOffset?: number
   onHover: (domainValue: string) => void
+  hoveredValue: string
 }> = ({
   colorScale,
   tickSpacing = 20,
   tickSize = 10,
   tickTextOffset = 20,
   onHover,
+  hoveredValue,
 }) =>
   colorScale.domain().map((domainValue: string, i: number) => (
     <g
