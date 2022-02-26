@@ -21,6 +21,9 @@ const ColorLegend: FC<{
       onMouseEnter={() => {
         onHover(domainValue)
       }}
+      onMouseOut={() => {
+        onHover('')
+      }}
     >
       <circle fill={colorScale(domainValue)} r={tickSize} />
       <text x={tickTextOffset} dy=".32em">
