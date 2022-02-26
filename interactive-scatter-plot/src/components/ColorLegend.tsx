@@ -7,6 +7,7 @@ const ColorLegend: FC<{
   tickTextOffset?: number
   onHover: (domainValue: string) => void
   hoveredValue: string
+  fadeOpacity: number
 }> = ({
   colorScale,
   tickSpacing = 20,
@@ -14,6 +15,7 @@ const ColorLegend: FC<{
   tickTextOffset = 20,
   onHover,
   hoveredValue,
+  fadeOpacity,
 }) =>
   colorScale.domain().map((domainValue: string, i: number) => (
     <g
@@ -26,6 +28,7 @@ const ColorLegend: FC<{
       onMouseOut={() => {
         onHover('')
       }}
+      opacity={hoveredValue && domainValue !== hoveredValue ? fadeOpacity : 1}
     >
       <circle fill={colorScale(domainValue)} r={tickSize} />
       <text x={tickTextOffset} dy=".32em">
