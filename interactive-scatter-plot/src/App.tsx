@@ -43,6 +43,7 @@ const App = () => {
   const initialYAttribute = 'sepal_width'
   const [xAttribute, setXAttribute] = useState(initialXAttribute)
   const [yAttribute, setYAttribute] = useState(initialYAttribute)
+  const [hoveredValue, setHoveredValue] = useState('')
 
   const xValue = (d: any) => d[xAttribute]
   const xAxisLabel = getLabel(xAttribute)
@@ -130,6 +131,7 @@ const App = () => {
               tickSpacing={20}
               tickSize={circleRadius}
               tickTextOffset={20}
+              onHover={setHoveredValue}
             />
           </g>
           <Marks
