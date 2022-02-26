@@ -134,6 +134,7 @@ const App = () => {
               tickSize={circleRadius}
               tickTextOffset={20}
               onHover={setHoveredValue}
+              hoveredValue={hoveredValue}
             />
           </g>
           <g opacity={hoveredValue ? 0.2 : 1}>
