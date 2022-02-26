@@ -19,6 +19,7 @@ const height = 500 - menuHeight
 const margin = { top: 20, right: 200, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
 const yAxisLabelOffset = 45
+const fadeOpacity = 0.2
 
 const attributes = [
   { value: 'sepal_length', label: 'Sepal Length' },
@@ -135,9 +136,10 @@ const App = () => {
               tickTextOffset={20}
               onHover={setHoveredValue}
               hoveredValue={hoveredValue}
+              fadeOpacity={fadeOpacity}
             />
           </g>
-          <g opacity={hoveredValue ? 0.2 : 1}>
+          <g opacity={hoveredValue ? fadeOpacity : 1}>
             <Marks
               data={data}
               xScale={xScale}
