@@ -5,14 +5,21 @@ const ColorLegend: FC<{
   tickSpacing?: number
   tickSize?: number
   tickTextOffset?: number
-}> = ({ colorScale, tickSpacing = 20, tickSize = 10, tickTextOffset = 20 }) =>
+  onHover: (domainValue: string) => void
+}> = ({
+  colorScale,
+  tickSpacing = 20,
+  tickSize = 10,
+  tickTextOffset = 20,
+  onHover,
+}) =>
   colorScale.domain().map((domainValue: string, i: number) => (
     <g
       className="tick"
       key={domainValue}
       transform={`translate(0,${i * tickSpacing})`}
       onMouseEnter={() => {
-        console.log(domainValue)
+        onHover(domainValue)
       }}
     >
       <circle fill={colorScale(domainValue)} r={tickSize} />
