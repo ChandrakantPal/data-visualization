@@ -136,7 +136,7 @@ const App = () => {
               onHover={setHoveredValue}
             />
           </g>
-          <g opacity={0.2}>
+          <g opacity={hoveredValue ? 0.2 : 1}>
             <Marks
               data={data}
               xScale={xScale}
