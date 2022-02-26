@@ -45,6 +45,13 @@ const App = () => {
   const [yAttribute, setYAttribute] = useState(initialYAttribute)
   const [hoveredValue, setHoveredValue] = useState('')
 
+  if (!data) {
+    return <pre>Loading...</pre>
+  }
+
+  const innerHeight = height - margin.top - margin.bottom
+  const innerWidth = width - margin.left - margin.right
+
   const xValue = (d: any) => d[xAttribute]
   const xAxisLabel = getLabel(xAttribute)
 
@@ -54,14 +61,9 @@ const App = () => {
   const colorValue = (d: any) => d.species
   const colorLegendLabel = 'Species'
 
+  const filteredData = data.filter((d: any) => hoveredValue === colorValue(d))
+
   const circleRadius = 7
-
-  if (!data) {
-    return <pre>Loading...</pre>
-  }
-
-  const innerHeight = height - margin.top - margin.bottom
-  const innerWidth = width - margin.left - margin.right
 
   const siFormat = format('.2s')
   const xAxisTickFormat = (tickValue: number) =>
