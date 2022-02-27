@@ -7,7 +7,8 @@ const graticule = geoGraticule()
 
 const Marks: FC<{
   worldAtlas: any
-}> = ({ worldAtlas: { land, interiors } }) => {
+  cities: any
+}> = ({ worldAtlas: { land, interiors }, cities }) => {
   console.log({ land, interiors })
 
   return (
