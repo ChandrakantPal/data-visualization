@@ -16,7 +16,7 @@ const App = () => {
   const worldAtlas = useWorldAtlas(jsonUrl)
   const cities = useCities(csvUrl)
 
-  if (!worldAtlas) {
+  if (!worldAtlas || !cities) {
     return <pre>Loading...</pre>
   }
 
