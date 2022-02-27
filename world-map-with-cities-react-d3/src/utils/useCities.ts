@@ -4,8 +4,14 @@ import { useEffect, useState } from 'react'
 export const useCities = (csvUrl: string) => {
   const [data, setData] = useState<any>(null)
 
+  const row = (d) => {
+    d.lat = +d.lat
+    d.lng = +d.lng
+    return d
+  }
+
   useEffect(() => {
-    csv(csvUrl).then(setData)
+    csv(csvUrl, row).then(setData)
   }, [])
 
   return data
