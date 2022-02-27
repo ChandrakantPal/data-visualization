@@ -19,6 +19,10 @@ const Marks: FC<{
         <path className="land" d={`${path(feature)}`} />
       ))}
       {/* <path className="interiors" d={`${path(interiors)}`} /> */}
+      {cities.map((d: any) => {
+        const [x, y] = projection([d.lng, d.lat])
+        return <circle cx={x} cy={y} r={1} />
+      })}
     </g>
   )
 }
