@@ -13,16 +13,16 @@ const width = 960
 const height = 500
 
 const App = () => {
-  const data = useWorldAtlas(jsonUrl)
+  const worldAtlas = useWorldAtlas(jsonUrl)
   const cities = useCities(csvUrl)
 
-  if (!data) {
+  if (!worldAtlas) {
     return <pre>Loading...</pre>
   }
 
   return (
     <svg width={width} height={height}>
-      <Marks data={data} />
+      <Marks worldAtlas={worldAtlas} />
     </svg>
   )
 }
