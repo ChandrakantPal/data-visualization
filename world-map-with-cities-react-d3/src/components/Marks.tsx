@@ -6,8 +6,8 @@ const path = geoPath(projection)
 const graticule = geoGraticule()
 
 const Marks: FC<{
-  data: any
-}> = ({ data: { land, interiors } }) => {
+  worldAtlas: any
+}> = ({ worldAtlas: { land, interiors } }) => {
   console.log({ land, interiors })
 
   return (
