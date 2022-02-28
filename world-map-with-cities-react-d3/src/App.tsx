@@ -20,6 +20,8 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
+  const sizeValue = (d: any) => d.population
+
   return (
     <svg width={width} height={height}>
       <Marks worldAtlas={worldAtlas} cities={cities} />
