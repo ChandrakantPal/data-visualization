@@ -11,8 +11,6 @@ const Marks: FC<{
   sizeScale: any
   sizeValue: any
 }> = ({ worldAtlas: { land, interiors }, cities, sizeScale, sizeValue }) => {
-  console.log({ land, interiors })
-
   return (
     <g className="marks">
       <path className="sphere" d={`${path({ type: 'Sphere' })}`} />
