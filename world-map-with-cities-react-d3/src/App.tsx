@@ -21,7 +21,7 @@ const App = () => {
   }
 
   const sizeValue = (d: any) => d.population
-  const maxRadius = 2
+  const maxRadius = 15
 
   const sizeScale = scaleSqrt()
     .domain([0, max(cities, sizeValue)])
