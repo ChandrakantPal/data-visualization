@@ -1,5 +1,5 @@
 import './App.css'
-import {} from 'd3'
+import { max, scaleSqrt } from 'd3'
 import { useWorldAtlas } from './utils/useWorldAtlas'
 import Marks from './components/Marks'
 import { useCities } from './utils/useCities'
@@ -22,6 +22,10 @@ const App = () => {
 
   const sizeValue = (d: any) => d.population
   const maxRadius = 20
+
+  const sizeScale = scaleSqrt()
+    .domain([0, max(cities, sizeValue)])
+    .range([0, maxRadius])
 
   return (
     <svg width={width} height={height}>
