@@ -8,7 +8,9 @@ const graticule = geoGraticule()
 const Marks: FC<{
   worldAtlas: any
   cities: any
-}> = ({ worldAtlas: { land, interiors }, cities }) => {
+  sizeScale: any
+  sizeValue: any
+}> = ({ worldAtlas: { land, interiors }, cities, sizeScale, sizeValue }) => {
   console.log({ land, interiors })
 
   return (
@@ -21,7 +23,7 @@ const Marks: FC<{
       {/* <path className="interiors" d={`${path(interiors)}`} /> */}
       {cities.map((d: any) => {
         const [x, y] = projection([d.lng, d.lat])
-        return <circle cx={x} cy={y} r={1.5} />
+        return <circle cx={x} cy={y} r={sizeScale(sizeValue(d))} />
       })}
     </g>
   )
