@@ -29,7 +29,12 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      <Marks worldAtlas={worldAtlas} cities={cities} />
+      <Marks
+        worldAtlas={worldAtlas}
+        cities={cities}
+        sizeScale={sizeScale}
+        sizeValue={sizeValue}
+      />
     </svg>
   )
 }
