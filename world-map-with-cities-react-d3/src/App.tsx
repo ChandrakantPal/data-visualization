@@ -21,6 +21,7 @@ const App = () => {
   }
 
   const sizeValue = (d: any) => d.population
+  const maxRadius = 20
 
   return (
     <svg width={width} height={height}>
