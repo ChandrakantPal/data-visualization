@@ -6,8 +6,7 @@ import AxisLeft from './components/AxisLeft'
 import Marks from './components/Marks'
 
 const csvUrl =
-  'https://gist.githubusercontent.com/curran/90240a6d88bdb1411467b21ea0769029/raw/7d4c3914cc6a29a7f5165f7d5d82b735d97bcfe4/week_temperature_sf.csv'
-
+  'https://gist.githubusercontent.com/curran/a9656d711a8ad31d812b8f9963ac441c/raw/267eac8b97d161c479d950ffad3ddd5ce2d1f370/MissingMigrants-Global-2019-10-08T09-47-14-subset.csv'
 const width = 960
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
