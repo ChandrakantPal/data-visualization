@@ -10,7 +10,7 @@ const csvUrl =
 const width = 960
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
-const xAxisLabelOffset = 50
+const xAxisLabelOffset = 60
 const yAxisLabelOffset = 45
 
 const App = () => {
@@ -75,7 +75,7 @@ const App = () => {
           xValue={xValue}
           yValue={yValue}
           tooltipFormat={xAxisTickFormat}
-          circleRadius={3}
+          circleRadius={2}
         />
       </g>
     </svg>
