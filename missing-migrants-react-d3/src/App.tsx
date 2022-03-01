@@ -29,7 +29,7 @@ const App = () => {
   const yValue = (d: any) => d['Total Dead and Missing']
   const yAxisLabel = 'Total Dead and Missing'
 
-  const xAxisTickFormat = timeFormat('%a')
+  const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
   const xScale = scaleTime()
     .domain(extent(data, xValue))
