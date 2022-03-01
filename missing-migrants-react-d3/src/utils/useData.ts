@@ -6,8 +6,8 @@ export const useData = (csvUrl: string) => {
 
   useEffect(() => {
     const row = (d: any) => {
-      d.temperature = +d.temperature
-      d.timestamp = new Date(d.timestamp)
+      d['Total Dead and Missing'] = +d['Total Dead and Missing']
+      d['Reported Date'] = new Date(d['Reported Date'])
       return d
     }
     csv(csvUrl, row).then(setData)
