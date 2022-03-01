@@ -23,11 +23,11 @@ const App = () => {
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
-  const xValue = (d: any) => d.timestamp
-  const xAxisLabel = 'Time'
+  const xValue = (d: any) => d['Reported Date']
+  const xAxisLabel = 'Reported Date'
 
-  const yValue = (d: any) => d.temperature
-  const yAxisLabel = 'Temperature'
+  const yValue = (d: any) => d['Total Dead and Missing']
+  const yAxisLabel = 'Total Dead and Missing'
 
   const xAxisTickFormat = timeFormat('%a')
 
