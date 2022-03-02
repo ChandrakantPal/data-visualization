@@ -92,7 +92,7 @@ const App = () => {
           {xAxisLabel}
         </text>
         <Marks
-          data={data}
+          binnedData={binnedData}
           xScale={xScale}
           yScale={yScale}
           xValue={xValue}
