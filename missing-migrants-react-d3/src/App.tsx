@@ -1,5 +1,13 @@
 import './App.css'
-import { scaleLinear, scaleTime, timeFormat, extent, bin, timeMonths } from 'd3'
+import {
+  scaleLinear,
+  scaleTime,
+  timeFormat,
+  extent,
+  bin,
+  timeMonths,
+  sum,
+} from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -47,6 +55,11 @@ const App = () => {
     .value(xValue)
     .domain(xScale.domain())
     .thresholds(timeMonths(start, stop))(data)
+    .map((array) => ({
+      totalDeadAndMissing: sum(array, yValue),
+      x0: array.x0,
+      x1: array.x1,
+    }))
 
   console.log({ binnedData })
 
