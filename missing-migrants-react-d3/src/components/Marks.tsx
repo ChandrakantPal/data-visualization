@@ -5,19 +5,9 @@ const Marks: FC<{
   binnedData: any
   yScale: any
   xScale: any
-  xValue: any
-  yValue: any
   tooltipFormat: any
   circleRadius?: number
-}> = ({
-  binnedData,
-  xScale,
-  yScale,
-  xValue,
-  yValue,
-  tooltipFormat,
-  circleRadius = 10,
-}) => (
+}> = ({ binnedData, xScale, yScale, tooltipFormat, circleRadius = 10 }) => (
   <g className="marks">
     {/* <path
       fill="none"
@@ -28,8 +18,8 @@ const Marks: FC<{
         .curve(curveNatural)(binnedData)}`}
     /> */}
     {binnedData.map((d: any) => (
-      <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
-        <title>{tooltipFormat(xValue(d))}</title>
+      <circle cx={xScale(d.x0)} cy={yScale(d.y)} r={circleRadius}>
+        <title>{tooltipFormat(d.x0)}</title>
       </circle>
     ))}
   </g>
