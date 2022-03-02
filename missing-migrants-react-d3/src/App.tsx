@@ -1,5 +1,5 @@
 import './App.css'
-import { scaleLinear, scaleTime, timeFormat, extent } from 'd3'
+import { scaleLinear, scaleTime, timeFormat, extent, bin } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -20,14 +20,16 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  const innerHeight = height - margin.top - margin.bottom
-  const innerWidth = width - margin.left - margin.right
-
   const xValue = (d: any) => d['Reported Date']
   const xAxisLabel = 'Reported Date'
 
   const yValue = (d: any) => d['Total Dead and Missing']
   const yAxisLabel = 'Total Dead and Missing'
+
+  const binnedData = bin().value(xValue)
+
+  const innerHeight = height - margin.top - margin.bottom
+  const innerWidth = width - margin.left - margin.right
 
   const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
