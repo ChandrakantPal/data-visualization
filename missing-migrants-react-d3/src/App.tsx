@@ -7,6 +7,7 @@ import {
   bin,
   timeMonths,
   sum,
+  max,
 } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
@@ -44,11 +45,6 @@ const App = () => {
     .range([0, innerWidth])
     .nice()
 
-  const yScale = scaleLinear()
-    .domain(extent(data, yValue))
-    .range([innerHeight, 0])
-    .nice()
-
   const [start, stop] = xScale.domain()
 
   const binnedData = bin()
@@ -56,10 +52,15 @@ const App = () => {
     .domain(xScale.domain())
     .thresholds(timeMonths(start, stop))(data)
     .map((array) => ({
-      totalDeadAndMissing: sum(array, yValue),
+      y: sum(array, yValue),
       x0: array.x0,
       x1: array.x1,
     }))
+
+  const yScale = scaleLinear()
+    .domain([0, max(binnedData, (d) => d.y)])
+    .range([innerHeight, 0])
+    .nice()
 
   console.log({ binnedData })
 
