@@ -95,8 +95,6 @@ const App = () => {
           binnedData={binnedData}
           xScale={xScale}
           yScale={yScale}
-          xValue={xValue}
-          yValue={yValue}
           tooltipFormat={xAxisTickFormat}
           circleRadius={2}
         />
