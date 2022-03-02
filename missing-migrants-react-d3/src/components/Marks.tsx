@@ -24,7 +24,7 @@ const Marks: FC<{
         width={xScale(d.x1) - xScale(d.x0)}
         height={innerHeight - yScale(d.y)}
       >
-        <title>{tooltipFormat(yScale(d.y))}</title>
+        <title>{tooltipFormat(d.y)}</title>
       </rect>
     ))}
   </g>
