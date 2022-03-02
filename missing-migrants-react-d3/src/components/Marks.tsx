@@ -2,7 +2,7 @@ import { line, curveNatural } from 'd3'
 import { FC } from 'react'
 
 const Marks: FC<{
-  data: any
+  binnedData: any
   yScale: any
   xScale: any
   xValue: any
@@ -10,7 +10,7 @@ const Marks: FC<{
   tooltipFormat: any
   circleRadius?: number
 }> = ({
-  data,
+  binnedData,
   xScale,
   yScale,
   xValue,
@@ -25,9 +25,9 @@ const Marks: FC<{
       d={`${line()
         .x((d) => xScale(xValue(d)))
         .y((d) => yScale(yValue(d)))
-        .curve(curveNatural)(data)}`}
+        .curve(curveNatural)(binnedData)}`}
     /> */}
-    {data.map((d: any) => (
+    {binnedData.map((d: any) => (
       <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
         <title>{tooltipFormat(xValue(d))}</title>
       </circle>
