@@ -96,7 +96,7 @@ const App = () => {
           xScale={xScale}
           yScale={yScale}
           tooltipFormat={xAxisTickFormat}
-          circleRadius={2}
+          innerHeight={innerHeight}
         />
       </g>
     </svg>
