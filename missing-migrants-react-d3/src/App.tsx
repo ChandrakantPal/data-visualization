@@ -1,5 +1,5 @@
 import './App.css'
-import { scaleLinear, scaleTime, timeFormat, extent, bin } from 'd3'
+import { scaleLinear, scaleTime, timeFormat, extent, bin, timeMonths } from 'd3'
 import { useData } from './utils/useData'
 import AxisBottom from './components/AxisBottom'
 import AxisLeft from './components/AxisLeft'
@@ -41,10 +41,12 @@ const App = () => {
     .range([innerHeight, 0])
     .nice()
 
+  const [start, stop] = xScale.domain()
+
   const binnedData = bin()
     .value(xValue)
     .domain(xScale.domain())
-    .thresholds(xScale.ticks(20))(data)
+    .thresholds(timeMonths(start, stop))(data)
 
   console.log({ binnedData })
 
