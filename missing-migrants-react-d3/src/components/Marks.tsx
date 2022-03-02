@@ -6,7 +6,8 @@ const Marks: FC<{
   yScale: any
   xScale: any
   tooltipFormat: any
-}> = ({ binnedData, xScale, yScale, tooltipFormat }) => (
+  innerHeight: number
+}> = ({ binnedData, xScale, yScale, tooltipFormat, innerHeight }) => (
   <g className="marks">
     {/* <path
       fill="none"
