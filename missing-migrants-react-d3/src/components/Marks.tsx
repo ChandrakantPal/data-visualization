@@ -19,7 +19,7 @@ const Marks: FC<{
     /> */}
     {binnedData.map((d: any) => (
       <circle cx={xScale(d.x0)} cy={yScale(d.y)} r={circleRadius}>
-        <title>{tooltipFormat(d.x0)}</title>
+        <title>{tooltipFormat(d.y)}</title>
       </circle>
     ))}
   </g>
