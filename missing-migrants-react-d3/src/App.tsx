@@ -26,8 +26,6 @@ const App = () => {
   const yValue = (d: any) => d['Total Dead and Missing']
   const yAxisLabel = 'Total Dead and Missing'
 
-  const binnedData = bin().value(xValue)
-
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
 
@@ -42,6 +40,13 @@ const App = () => {
     .domain(extent(data, yValue))
     .range([innerHeight, 0])
     .nice()
+
+  const binnedData = bin()
+    .value(xValue)
+    .domain(xScale.domain())
+    .thresholds(xScale.ticks(20))(data)
+
+  console.log({ binnedData })
 
   return (
     <svg width={width} height={height}>
