@@ -95,7 +95,7 @@ const App = () => {
           binnedData={binnedData}
           xScale={xScale}
           yScale={yScale}
-          tooltipFormat={xAxisTickFormat}
+          tooltipFormat={(d) => d}
           innerHeight={innerHeight}
         />
       </g>
