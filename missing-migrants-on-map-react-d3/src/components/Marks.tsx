@@ -20,7 +20,7 @@ const Marks: FC<{
       ))}
       {/* <path className="interiors" d={`${path(interiors)}`} /> */}
       {data.map((d: any) => {
-        const [x, y] = projection(d.cords)
+        const [x, y] = projection(d.coords)
         return <circle cx={x} cy={y} r={sizeScale(sizeValue(d))} />
       })}
     </g>
