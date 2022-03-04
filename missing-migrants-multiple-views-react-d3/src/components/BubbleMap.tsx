@@ -1,12 +1,11 @@
 import { max, scaleSqrt } from 'd3'
 import { FC } from 'react'
-import { useWorldAtlas } from '../utils/useWorldAtlas'
 import Marks from './Marks'
 
-const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
-
-const BubbleMap: FC<{ data: any }> = ({ data }) => {
-  const worldAtlas = useWorldAtlas(jsonUrl)
+const BubbleMap: FC<{ data: any; worldAtlas: any }> = ({
+  data,
+  worldAtlas,
+}) => {
   const sizeValue = (d: any) => d['Total Dead and Missing']
   const maxRadius = 15
 
