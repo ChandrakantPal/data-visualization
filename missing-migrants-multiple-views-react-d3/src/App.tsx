@@ -1,8 +1,8 @@
 import './App.css'
 import { max, scaleSqrt } from 'd3'
 import { useWorldAtlas } from './utils/useWorldAtlas'
-import Marks from './components/Marks'
 import { useData } from './utils/useData'
+import BubbleMap from './components/BubbleMap'
 
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
@@ -28,12 +28,7 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      <Marks
-        worldAtlas={worldAtlas}
-        data={data}
-        sizeScale={sizeScale}
-        sizeValue={sizeValue}
-      />
+      <BubbleMap worldAtlas={worldAtlas} data={data} />
     </svg>
   )
 }
