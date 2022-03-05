@@ -3,7 +3,7 @@ import { max, scaleSqrt } from 'd3'
 import { useWorldAtlas } from './utils/useWorldAtlas'
 import { useData } from './utils/useData'
 import BubbleMap from './components/BubbleMap/BubbleMap'
-import DateHistogram from './components/DateHistogram'
+import DateHistogram from './components/DateHistogram/DateHistogram'
 
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
