@@ -11,6 +11,7 @@ const csvUrl =
   'https://gist.githubusercontent.com/curran/a9656d711a8ad31d812b8f9963ac441c/raw/c22144062566de911ba32509613c84af2a99e8e2/MissingMigrants-Global-2019-10-08T09-47-14-subset.csv'
 const width = 960
 const height = 500
+const dateHistogramSize = 0.2
 
 const App = () => {
   const worldAtlas = useWorldAtlas(jsonUrl)
@@ -30,7 +31,7 @@ const App = () => {
   return (
     <svg width={width} height={height}>
       <BubbleMap worldAtlas={worldAtlas} data={data} />
-      <g transform={`translate(0,400)`}>
+      <g transform={`translate(0,${height - dateHistogramSize * height})`}>
         <DateHistogram data={data} />
       </g>
     </svg>
