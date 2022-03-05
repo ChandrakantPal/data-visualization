@@ -11,7 +11,7 @@ import {
 import { FC } from 'react'
 
 const width = 960
-const height = 500
+const height = 100
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 
 const DateHistogram: FC<{ data: any }> = ({ data }) => {
