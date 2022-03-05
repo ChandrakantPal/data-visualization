@@ -56,7 +56,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
 
   return (
     <>
-      <rect width={width} height={height} />
+      <rect width={width} height={height} fill="white" />
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom
           xScale={xScale}
