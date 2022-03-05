@@ -53,6 +53,7 @@ const DateHistogram: FC<{ data: any; height: number }> = ({ data, height }) => {
 
   return (
     <g transform={`translate(${margin.left},${margin.top})`}>
+      <rect width={width} height={height} />
       <AxisBottom
         xScale={xScale}
         innerHeight={innerHeight}
