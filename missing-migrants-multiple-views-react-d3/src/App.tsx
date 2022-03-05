@@ -32,7 +32,11 @@ const App = () => {
     <svg width={width} height={height}>
       <BubbleMap worldAtlas={worldAtlas} data={data} />
       <g transform={`translate(0,${height - dateHistogramSize * height})`}>
-        <DateHistogram data={data} height={dateHistogramSize * height} />
+        <DateHistogram
+          data={data}
+          height={dateHistogramSize * height}
+          width={width}
+        />
       </g>
     </svg>
   )
