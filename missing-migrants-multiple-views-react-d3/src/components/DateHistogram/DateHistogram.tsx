@@ -55,44 +55,46 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
     .nice()
 
   return (
-    <g transform={`translate(${margin.left},${margin.top})`}>
+    <>
       <rect width={width} height={height} />
-      <AxisBottom
-        xScale={xScale}
-        innerHeight={innerHeight}
-        tickFormat={xAxisTickFormat}
-        tickOffset={7}
-      />
-      <text
-        className="axis-label"
-        textAnchor="middle"
-        transform={`translate(${-yAxisLabelOffset},${
-          innerHeight / 2
-        })rotate(-90)`}
-      >
-        {yAxisLabel}
-      </text>
-      <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
-      <text
-        className="axis-label"
-        x={innerWidth / 2}
-        y={innerHeight + xAxisLabelOffset}
-        textAnchor="middle"
-      >
-        {xAxisLabel}
-      </text>
-      {binnedData.map((d: any) => (
-        <rect
-          className="mark"
-          x={xScale(d.x0)}
-          y={yScale(d.y)}
-          width={xScale(d.x1) - xScale(d.x0)}
-          height={innerHeight - yScale(d.y)}
+      <g transform={`translate(${margin.left},${margin.top})`}>
+        <AxisBottom
+          xScale={xScale}
+          innerHeight={innerHeight}
+          tickFormat={xAxisTickFormat}
+          tickOffset={7}
+        />
+        <text
+          className="axis-label"
+          textAnchor="middle"
+          transform={`translate(${-yAxisLabelOffset},${
+            innerHeight / 2
+          })rotate(-90)`}
         >
-          {/* <title>{tooltipFormat(d.y)}</title> */}
-        </rect>
-      ))}
-    </g>
+          {yAxisLabel}
+        </text>
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
+        <text
+          className="axis-label"
+          x={innerWidth / 2}
+          y={innerHeight + xAxisLabelOffset}
+          textAnchor="middle"
+        >
+          {xAxisLabel}
+        </text>
+        {binnedData.map((d: any) => (
+          <rect
+            className="mark"
+            x={xScale(d.x0)}
+            y={yScale(d.y)}
+            width={xScale(d.x1) - xScale(d.x0)}
+            height={innerHeight - yScale(d.y)}
+          >
+            {/* <title>{tooltipFormat(d.y)}</title> */}
+          </rect>
+        ))}
+      </g>
+    </>
   )
 }
 
