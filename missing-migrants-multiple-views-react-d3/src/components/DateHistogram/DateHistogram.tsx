@@ -13,7 +13,7 @@ import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
 
 const width = 960
-const margin = { top: 0, right: 30, bottom: 20, left: 60 }
+const margin = { top: 0, right: 30, bottom: 20, left: 45 }
 const xAxisLabelOffset = 60
 const yAxisLabelOffset = 30
 
