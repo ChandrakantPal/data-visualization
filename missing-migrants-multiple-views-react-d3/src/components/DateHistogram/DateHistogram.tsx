@@ -9,9 +9,13 @@ import {
   timeMonths,
 } from 'd3'
 import { FC } from 'react'
+import AxisBottom from './AxisBottom'
+import AxisLeft from './AxisLeft'
 
 const width = 960
-const margin = { top: 0, right: 30, bottom: 0, left: 90 }
+const margin = { top: 0, right: 30, bottom: 20, left: 90 }
+const xAxisLabelOffset = 60
+const yAxisLabelOffset = 45
 
 const DateHistogram: FC<{ data: any; height: number }> = ({ data, height }) => {
   const xValue = (d: any) => d['Reported Date']
@@ -49,8 +53,33 @@ const DateHistogram: FC<{ data: any; height: number }> = ({ data, height }) => {
 
   return (
     <g transform={`translate(${margin.left},${margin.top})`}>
+      <AxisBottom
+        xScale={xScale}
+        innerHeight={innerHeight}
+        tickFormat={xAxisTickFormat}
+        tickOffset={7}
+      />
+      <text
+        className="axis-label"
+        textAnchor="middle"
+        transform={`translate(${-yAxisLabelOffset},${
+          innerHeight / 2
+        })rotate(-90)`}
+      >
+        {yAxisLabel}
+      </text>
+      <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
+      <text
+        className="axis-label"
+        x={innerWidth / 2}
+        y={innerHeight + xAxisLabelOffset}
+        textAnchor="middle"
+      >
+        {xAxisLabel}
+      </text>
       {binnedData.map((d: any) => (
         <rect
+          className="mark"
           x={xScale(d.x0)}
           y={yScale(d.y)}
           width={xScale(d.x1) - xScale(d.x0)}
