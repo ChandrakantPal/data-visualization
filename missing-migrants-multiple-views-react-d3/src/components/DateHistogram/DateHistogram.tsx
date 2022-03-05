@@ -11,6 +11,7 @@ import {
 import { FC } from 'react'
 import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
+import Marks from './Marks'
 
 const margin = { top: 0, right: 30, bottom: 20, left: 45 }
 const xAxisLabelOffset = 60
@@ -82,17 +83,13 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
         >
           {xAxisLabel}
         </text>
-        {binnedData.map((d: any) => (
-          <rect
-            className="mark"
-            x={xScale(d.x0)}
-            y={yScale(d.y)}
-            width={xScale(d.x1) - xScale(d.x0)}
-            height={innerHeight - yScale(d.y)}
-          >
-            {/* <title>{tooltipFormat(d.y)}</title> */}
-          </rect>
-        ))}
+        <Marks
+          binnedData={binnedData}
+          innerHeight={innerHeight}
+          xScale={xScale}
+          yScale={yScale}
+          tooltipFormat={(d: any) => d}
+        />
       </g>
     </>
   )
