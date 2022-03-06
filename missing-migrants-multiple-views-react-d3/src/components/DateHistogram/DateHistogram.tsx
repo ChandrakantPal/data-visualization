@@ -22,7 +22,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
   height,
   width,
 }) => {
-  const brushRef = useRef()
+  const brushRef = useRef(null)
   const xValue = (d: any) => d['Reported Date']
   const xAxisLabel = 'Reported Date'
 
@@ -91,6 +91,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
           yScale={yScale}
           tooltipFormat={(d: any) => d}
         />
+        <g ref={brushRef} />
       </g>
     </>
   )
