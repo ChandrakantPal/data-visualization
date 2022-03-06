@@ -1,14 +1,16 @@
 import {
   bin,
+  brushX,
   extent,
   max,
   scaleLinear,
   scaleTime,
+  select,
   sum,
   timeFormat,
   timeMonths,
 } from 'd3'
-import { FC, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
 import Marks from './Marks'
@@ -22,7 +24,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
   height,
   width,
 }) => {
-  const brushRef = useRef(null)
+  const brushRef = useRef()
   const xValue = (d: any) => d['Reported Date']
   const xAxisLabel = 'Reported Date'
 
@@ -55,6 +57,14 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
     .domain([0, max(binnedData, (d) => d.y)])
     .range([innerHeight, 0])
     .nice()
+
+  useEffect(() => {
+    const brush = brushX().extent([
+      [0, 0],
+      [innerWidth, innerHeight],
+    ])
+    brush(select(brushRef.current))
+  }, [innerHeight, innerWidth])
 
   return (
     <>
