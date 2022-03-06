@@ -19,11 +19,12 @@ const margin = { top: 0, right: 30, bottom: 20, left: 45 }
 const xAxisLabelOffset = 60
 const yAxisLabelOffset = 30
 
-const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
-  data,
-  height,
-  width,
-}) => {
+const DateHistogram: FC<{
+  data: any
+  height: number
+  width: number
+  setBrushExtent: any
+}> = ({ data, height, width, setBrushExtent }) => {
   const brushRef = useRef()
   const xValue = (d: any) => d['Reported Date']
   const xAxisLabel = 'Reported Date'
@@ -66,7 +67,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
     brush(select(brushRef.current))
     brush.on('brush', (event) => {
       if (event.selection) {
-        console.log(event.selection.map(xScale.invert))
+        setBrushExtent(event.selection.map(xScale.invert))
       }
     })
   }, [innerHeight, innerWidth])
