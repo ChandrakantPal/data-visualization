@@ -66,9 +66,11 @@ const DateHistogram: FC<{
       [innerWidth, innerHeight],
     ])
     brush(select(brushRef.current))
-    brush.on('brush', (event) => {
+    brush.on('brush end', (event) => {
       if (event.selection) {
         setBrushExtent(event.selection.map(xScale.invert))
+      } else {
+        setBrushExtent([])
       }
     })
   }, [innerHeight, innerWidth])
