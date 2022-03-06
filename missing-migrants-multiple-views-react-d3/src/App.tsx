@@ -33,13 +33,6 @@ const App = () => {
         })
       : data
 
-  const sizeValue = (d: any) => d['Total Dead and Missing']
-  const maxRadius = 15
-
-  const sizeScale = scaleSqrt()
-    .domain([0, max(data, sizeValue)])
-    .range([0, maxRadius])
-
   return (
     <svg width={width} height={height}>
       <BubbleMap worldAtlas={worldAtlas} data={filteredData} />
