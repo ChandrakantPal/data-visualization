@@ -63,10 +63,12 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
       [0, 0],
       [innerWidth, innerHeight],
     ])
-    brush.on('brush', () => {
-      console.log('brushed')
-    })
     brush(select(brushRef.current))
+    brush.on('brush', (event) => {
+      if (event.selection) {
+        console.log(event.selection.map(xScale.invert))
+      }
+    })
   }, [innerHeight, innerWidth])
 
   return (
