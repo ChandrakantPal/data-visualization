@@ -4,6 +4,7 @@ import { useWorldAtlas } from './utils/useWorldAtlas'
 import { useData } from './utils/useData'
 import BubbleMap from './components/BubbleMap/BubbleMap'
 import DateHistogram from './components/DateHistogram/DateHistogram'
+import { useState } from 'react'
 
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
@@ -16,6 +17,7 @@ const dateHistogramSize = 0.2
 const App = () => {
   const worldAtlas = useWorldAtlas(jsonUrl)
   const data = useData(csvUrl)
+  const [brushExtent, setbrushExtent] = useState<Date[] | []>([])
 
   if (!worldAtlas || !data) {
     return <pre>Loading...</pre>
@@ -36,6 +38,7 @@ const App = () => {
           data={data}
           height={dateHistogramSize * height}
           width={width}
+          setBrushExtent={setbrushExtent}
         />
       </g>
     </svg>
