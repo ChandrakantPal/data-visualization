@@ -19,9 +19,19 @@ const App = () => {
   const data = useData(csvUrl)
   const [brushExtent, setbrushExtent] = useState<Date[] | []>([])
 
+  const xValue = (d: any) => d['Reported Date']
+
   if (!worldAtlas || !data) {
     return <pre>Loading...</pre>
   }
+
+  const filteredData =
+    brushExtent.length > 0
+      ? data.filter((d: any) => {
+          const date = xValue(d)
+          return date > brushExtent[0] && date < brushExtent[1]
+        })
+      : data
 
   const sizeValue = (d: any) => d['Total Dead and Missing']
   const maxRadius = 15
@@ -32,13 +42,14 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      <BubbleMap worldAtlas={worldAtlas} data={data} />
+      <BubbleMap worldAtlas={worldAtlas} data={filteredData} />
       <g transform={`translate(0,${height - dateHistogramSize * height})`}>
         <DateHistogram
           data={data}
           height={dateHistogramSize * height}
           width={width}
           setBrushExtent={setbrushExtent}
+          xValue={xValue}
         />
       </g>
     </svg>
