@@ -8,7 +8,7 @@ import {
   timeFormat,
   timeMonths,
 } from 'd3'
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
 import Marks from './Marks'
@@ -22,6 +22,7 @@ const DateHistogram: FC<{ data: any; height: number; width: number }> = ({
   height,
   width,
 }) => {
+  const brushRef = useRef()
   const xValue = (d: any) => d['Reported Date']
   const xAxisLabel = 'Reported Date'
 
