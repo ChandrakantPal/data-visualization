@@ -24,9 +24,10 @@ const DateHistogram: FC<{
   height: number
   width: number
   setBrushExtent: any
-}> = ({ data, height, width, setBrushExtent }) => {
+  xValue: any
+}> = ({ data, height, width, setBrushExtent, xValue }) => {
   const brushRef = useRef()
-  const xValue = (d: any) => d['Reported Date']
+
   const xAxisLabel = 'Reported Date'
 
   const yValue = (d: any) => d['Total Dead and Missing']
