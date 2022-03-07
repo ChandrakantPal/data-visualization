@@ -35,7 +35,11 @@ const App = () => {
 
   return (
     <svg width={width} height={height}>
-      <BubbleMap worldAtlas={worldAtlas} data={filteredData} />
+      <BubbleMap
+        worldAtlas={worldAtlas}
+        data={data}
+        filteredData={filteredData}
+      />
       <g transform={`translate(0,${height - dateHistogramSize * height})`}>
         <DateHistogram
           data={data}
