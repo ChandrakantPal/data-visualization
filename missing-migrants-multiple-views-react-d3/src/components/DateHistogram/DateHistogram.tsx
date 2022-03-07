@@ -18,6 +18,7 @@ import Marks from './Marks'
 const margin = { top: 0, right: 30, bottom: 20, left: 45 }
 const xAxisLabelOffset = 60
 const yAxisLabelOffset = 30
+const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
 const DateHistogram: FC<{
   data: any
@@ -35,8 +36,6 @@ const DateHistogram: FC<{
 
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
-
-  const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
   const xScale = scaleTime()
     .domain(extent(data, xValue))
