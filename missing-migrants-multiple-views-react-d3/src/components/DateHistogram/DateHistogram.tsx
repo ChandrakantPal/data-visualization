@@ -56,10 +56,14 @@ const DateHistogram: FC<{
       }))
   }, [data, xValue, xScale, yValue])
 
-  const yScale = scaleLinear()
-    .domain([0, max(binnedData, (d) => d.y)])
-    .range([innerHeight, 0])
-    .nice()
+  const yScale = useMemo(
+    () =>
+      scaleLinear()
+        .domain([0, max(binnedData, (d) => d.y)])
+        .range([innerHeight, 0])
+        .nice(),
+    [binnedData, innerHeight]
+  )
 
   useEffect(() => {
     const brush = brushX().extent([
