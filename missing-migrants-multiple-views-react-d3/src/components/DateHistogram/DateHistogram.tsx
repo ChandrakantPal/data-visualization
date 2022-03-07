@@ -20,6 +20,11 @@ const xAxisLabelOffset = 60
 const yAxisLabelOffset = 30
 const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
+const xAxisLabel = 'Reported Date'
+
+const yValue = (d: any) => d['Total Dead and Missing']
+const yAxisLabel = 'Total Dead and Missing'
+
 const DateHistogram: FC<{
   data: any
   height: number
@@ -28,11 +33,6 @@ const DateHistogram: FC<{
   xValue: any
 }> = ({ data, height, width, setBrushExtent, xValue }) => {
   const brushRef = useRef()
-
-  const xAxisLabel = 'Reported Date'
-
-  const yValue = (d: any) => d['Total Dead and Missing']
-  const yAxisLabel = 'Total Dead and Missing'
 
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
@@ -43,17 +43,18 @@ const DateHistogram: FC<{
     [data, xValue, innerWidth]
   )
 
-  const [start, stop] = xScale.domain()
-
-  const binnedData = bin()
-    .value(xValue)
-    .domain(xScale.domain())
-    .thresholds(timeMonths(start, stop))(data)
-    .map((array) => ({
-      y: sum(array, yValue),
-      x0: array.x0,
-      x1: array.x1,
-    }))
+  const binnedData = useMemo(() => {
+    const [start, stop] = xScale.domain()
+    return bin()
+      .value(xValue)
+      .domain(xScale.domain())
+      .thresholds(timeMonths(start, stop))(data)
+      .map((array) => ({
+        y: sum(array, yValue),
+        x0: array.x0,
+        x1: array.x1,
+      }))
+  }, [data, xValue, xScale, yValue])
 
   const yScale = scaleLinear()
     .domain([0, max(binnedData, (d) => d.y)])
