@@ -12,9 +12,11 @@ const AxisLeft: FC<{
       transform={`translate(0,${yScale(tickValue)})`}
     >
       <line x2={innerWidth} />
-      <text style={{ textAnchor: 'end' }} dy=".32em" x={-tickOffset}>
-        {tickValue}
-      </text>
+      {yScale.tickFormat()(tickValue) ? (
+        <text style={{ textAnchor: 'end' }} dy=".32em" x={-tickOffset}>
+          {tickValue}
+        </text>
+      ) : null}
     </g>
   ))
 
