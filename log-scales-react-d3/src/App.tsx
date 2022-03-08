@@ -1,6 +1,6 @@
 import './App.css'
 import {
-  scaleLinear,
+  scaleLog,
   scaleTime,
   timeFormat,
   extent,
@@ -19,8 +19,8 @@ const csvUrl =
 const width = 960
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
-const xAxisLabelOffset = 60
-const yAxisLabelOffset = 45
+const xAxisLabelOffset = 54
+const yAxisLabelOffset = 50
 
 const App = () => {
   const data = useData(csvUrl)
@@ -29,14 +29,14 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  const xValue = (d: any) => d['Reported Date']
-  const xAxisLabel = 'Reported Date'
-
-  const yValue = (d: any) => d['Total Dead and Missing']
-  const yAxisLabel = 'Total Dead and Missing'
-
   const innerHeight = height - margin.top - margin.bottom
   const innerWidth = width - margin.left - margin.right
+
+  const xValue = (d) => d['Reported Date']
+  const xAxisLabel = 'Time'
+
+  const yValue = (d) => d['Total Dead and Missing']
+  const yAxisLabel = 'Total Dead and Missing'
 
   const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
@@ -45,24 +45,11 @@ const App = () => {
     .range([0, innerWidth])
     .nice()
 
-  const [start, stop] = xScale.domain()
-
-  const binnedData = bin()
-    .value(xValue)
-    .domain(xScale.domain())
-    .thresholds(timeMonths(start, stop))(data)
-    .map((array) => ({
-      y: sum(array, yValue),
-      x0: array.x0,
-      x1: array.x1,
-    }))
-
-  const yScale = scaleLinear()
-    .domain([0, max(binnedData, (d) => d.y)])
+  const yScale = scaleLog()
+    .domain([1, max(data, yValue)])
     .range([innerHeight, 0])
-    .nice()
 
-  console.log({ binnedData })
+  console.log(extent(data, yValue))
 
   return (
     <svg width={width} height={height}>
@@ -71,18 +58,18 @@ const App = () => {
           xScale={xScale}
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
-          tickOffset={7}
+          tickOffset={5}
         />
         <text
           className="axis-label"
           textAnchor="middle"
           transform={`translate(${-yAxisLabelOffset},${
             innerHeight / 2
-          })rotate(-90)`}
+          }) rotate(-90)`}
         >
           {yAxisLabel}
         </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={5} />
         <text
           className="axis-label"
           x={innerWidth / 2}
@@ -92,11 +79,13 @@ const App = () => {
           {xAxisLabel}
         </text>
         <Marks
-          binnedData={binnedData}
+          data={data}
           xScale={xScale}
           yScale={yScale}
-          tooltipFormat={(d) => d}
-          innerHeight={innerHeight}
+          xValue={xValue}
+          yValue={yValue}
+          tooltipFormat={xAxisTickFormat}
+          circleRadius={2}
         />
       </g>
     </svg>
