@@ -12,7 +12,7 @@ pre {
 .tick text {
   fill: #635f5d;
 }
-.marks rect {
+.mark {
   fill: #137b80;
 }
 .marks path {
