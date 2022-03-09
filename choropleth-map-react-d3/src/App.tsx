@@ -7,7 +7,7 @@ import { useData } from './utils/useData'
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
 const csvUrl =
-  'https://gist.githubusercontent.com/curran/a9656d711a8ad31d812b8f9963ac441c/raw/c22144062566de911ba32509613c84af2a99e8e2/MissingMigrants-Global-2019-10-08T09-47-14-subset.csv'
+  'https://gist.githubusercontent.com/curran/470752f12c027f8ff4266e7c96f26a56/raw/66908b56e371e7c9f5a1c0911ac3250f570a4c83/share-of-population-infected-with-hiv-ihme.csv'
 const width = 960
 const height = 500
 
