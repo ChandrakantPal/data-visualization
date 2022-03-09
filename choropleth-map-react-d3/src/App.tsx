@@ -19,10 +19,9 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  const filteredData = data.filter((d) => d.Year === selectedYear)
+  const filteredData = data.filter((d: any) => d.Year === selectedYear)
 
-  const sizeValue = (d: any) => d['Total Dead and Missing']
-  const maxRadius = 15
+  const colorValue = (d: any) => d.adis
 
   const sizeScale = scaleSqrt()
     .domain([0, max(data, sizeValue)])
