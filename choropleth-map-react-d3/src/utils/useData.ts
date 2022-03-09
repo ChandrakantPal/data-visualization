@@ -5,11 +5,8 @@ export const useData = (csvUrl: string) => {
   const [data, setData] = useState<any>(null)
 
   const row = (d: any) => {
-    d.coords = d['Location Coordinates']
-      .split(',')
-      .map((d: any) => +d)
-      .reverse()
-    d['Total Dead and Missing'] = +d['Total Dead and Missing']
+    d.aids =
+      +d['Prevalence - HIV/AIDS - Sex: Both - Age: 15-49 years (Percent) (%)']
     return d
   }
 
