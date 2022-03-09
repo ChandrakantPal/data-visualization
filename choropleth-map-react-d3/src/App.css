@@ -6,9 +6,7 @@ body {
 pre {
   font-size: 7em;
 }
-.marks .land {
-  fill: #ececec;
-}
+
 .marks .sphere {
   fill: #fbfbfb;
 }
