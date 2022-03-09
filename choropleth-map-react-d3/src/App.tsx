@@ -10,7 +10,7 @@ const csvUrl =
   'https://gist.githubusercontent.com/curran/470752f12c027f8ff4266e7c96f26a56/raw/66908b56e371e7c9f5a1c0911ac3250f570a4c83/share-of-population-infected-with-hiv-ihme.csv'
 const width = 960
 const height = 500
-
+const selectedYear = '2017'
 const App = () => {
   const worldAtlas = useWorldAtlas(jsonUrl)
   const data = useData(csvUrl)
@@ -18,6 +18,8 @@ const App = () => {
   if (!worldAtlas || !data) {
     return <pre>Loading...</pre>
   }
+
+  const filteredData = data.filter((d) => d.Year === selectedYear)
 
   const sizeValue = (d: any) => d['Total Dead and Missing']
   const maxRadius = 15
