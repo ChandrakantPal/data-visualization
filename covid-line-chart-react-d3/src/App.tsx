@@ -1,43 +1,25 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import React, { useEffect, useState } from 'react'
+import { csv } from 'd3-fetch'
 import './App.css'
+import { DSVRowArray } from 'd3-dsv'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [data, setData] = useState<DSVRowArray<string> | null>(null)
+
+  useEffect(() => {
+    const csvUrl =
+      'https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv'
+    csv(csvUrl).then(setData)
+  }, [])
+
+  const message = (messageData: DSVRowArray<string>) => `
+    ${Math.round(messageData.length / 1024)}  kb \n${
+    messageData.length
+  } rows\n${messageData.columns.length} columns`
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <pre>{data ? message(data) : 'Loading...'}</pre>
     </div>
   )
 }
