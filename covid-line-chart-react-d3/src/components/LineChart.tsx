@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { extent, max, scaleLinear, scaleTime } from 'd3'
+import { extent, line, max, scaleLinear, scaleTime } from 'd3'
 
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
@@ -13,6 +13,10 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   const yScale = scaleLinear()
     .domain([0, max(data, yValue)])
     .range([height, 0])
+
+  const lineGenerator = line()
+    .x((d) => xScale(xValue(d)))
+    .y((d) => yScale(yValue(d)))
 
   return <div>LineChart</div>
 }
