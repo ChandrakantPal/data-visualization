@@ -18,7 +18,11 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
     .x((d) => xScale(xValue(d)))
     .y((d) => yScale(yValue(d)))
 
-  return <div>LineChart</div>
+  return (
+    <svg width={width} height={height}>
+      <path d={`${lineGenerator(data)}`} />
+    </svg>
+  )
 }
 
 export default LineChart
