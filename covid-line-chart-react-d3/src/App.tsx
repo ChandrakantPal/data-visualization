@@ -3,8 +3,8 @@ import { csv } from 'd3-fetch'
 import './App.css'
 import { DSVRowArray } from 'd3-dsv'
 
-const width = document.body.clientWidth
-const height = document.body.clientHeight
+const width = window.innerWidth
+const height = window.innerHeight
 const App = () => {
   const [data, setData] = useState<DSVRowArray<string> | null>(null)
 
