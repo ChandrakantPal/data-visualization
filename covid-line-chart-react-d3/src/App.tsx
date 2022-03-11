@@ -1,4 +1,5 @@
 import './App.css'
+import LineChart from './components/LineChart'
 import { useData } from './utils/useData'
 
 const width = window.innerWidth
@@ -12,7 +13,11 @@ const csvUrl =
 const App = () => {
   const data = useData(csvUrl)
 
-  return <div className="App"></div>
+  return data ? (
+    <LineChart data={data} width={width} height={height} />
+  ) : (
+    <div>Loading...</div>
+  )
 }
 
 export default App
