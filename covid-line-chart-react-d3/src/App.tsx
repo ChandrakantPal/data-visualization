@@ -1,29 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { csv } from 'd3-fetch'
 import './App.css'
-import { DSVRowArray } from 'd3-dsv'
+import { useData } from './utils/useData'
 
 const width = window.innerWidth
 const height = window.innerHeight
+const csvUrl =
+  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/02be34e5ec0409835f79f61a547b2b42f2c6dfd7/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv'
+
+//const csvUrl =
+//  'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv';
+
 const App = () => {
-  const [data, setData] = useState<DSVRowArray<string> | null>(null)
+  const data = useData(csvUrl)
 
-  useEffect(() => {
-    const csvUrl =
-      'https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv'
-    csv(csvUrl).then(setData)
-  }, [])
-
-  const message = (messageData: DSVRowArray<string>) => `
-    ${Math.round(messageData.length / 1024)}  kb \n${
-    messageData.length
-  } rows\n${messageData.columns.length} columns`
-
-  return (
-    <div className="App">
-      <pre>{data ? message(data) : 'Loading...'}</pre>
-    </div>
-  )
+  return <div className="App"></div>
 }
 
 export default App
