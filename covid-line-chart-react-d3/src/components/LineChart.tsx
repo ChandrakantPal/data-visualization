@@ -25,6 +25,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   return (
     <svg width={width} height={height}>
       <line
+        stroke={'black'}
         x1={markerLineX1}
         y1={markerLineY}
         x2={markerLineX2}
