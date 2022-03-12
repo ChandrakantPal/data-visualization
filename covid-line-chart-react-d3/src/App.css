@@ -1,5 +1,10 @@
 path {
   fill: none;
   stroke: black;
-  stroke-width: 10px;
+  stroke-width: 5px;
+}
+
+.marker-line {
+  stroke: black;
+  stroke-width: 2px;
 }
