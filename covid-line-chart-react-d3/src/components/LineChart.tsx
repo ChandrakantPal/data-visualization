@@ -18,7 +18,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
     .x((d) => xScale(xValue(d)))
     .y((d) => yScale(yValue(d)))
 
-  const markerLineY = 1000
+  const markerLineY = yScale(10000)
   const markerLineX1 = 0
   const markerLineX2 = width
 
