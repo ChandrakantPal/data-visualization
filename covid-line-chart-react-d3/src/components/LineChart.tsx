@@ -26,7 +26,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
 
   const markerLineY = yScale(10000)
   const markerLineX1 = 0
-  const markerLineX2 = width
+  const markerLineX2 = innerWidth
 
   return (
     <svg width={width} height={height}>
