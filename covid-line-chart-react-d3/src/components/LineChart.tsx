@@ -11,11 +11,14 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   width,
   height,
 }) => {
-  const xScale = scaleTime().domain(extent(data, xValue)).range([0, width])
+  const innerWidth = width - margin.left - margin.right
+  const innerHeight = height - margin.top - margin.bottom
+
+  const xScale = scaleTime().domain(extent(data, xValue)).range([0, innerWidth])
 
   const yScale = scaleLinear()
     .domain([0, max(data, yValue)])
-    .range([height, 0])
+    .range([innerHeight, 0])
 
   const lineGenerator = line()
     .x((d) => xScale(xValue(d)))
