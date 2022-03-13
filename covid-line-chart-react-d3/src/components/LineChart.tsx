@@ -4,7 +4,7 @@ import { extent, line, max, scaleLinear, scaleTime } from 'd3'
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
 
-const margin = { top: 0, right: 0, bottom: 0, left: 0 }
+const margin = { top: 0, right: 0, bottom: 0, left: 30 }
 
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
@@ -27,14 +27,16 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
 
   return (
     <svg width={width} height={height}>
-      <line
-        className="marker-line"
-        x1={markerLineX1}
-        y1={markerLineY}
-        x2={markerLineX2}
-        y2={markerLineY}
-      />
-      <path d={`${lineGenerator(data)}`} />
+      <g transform={`translate(${margin.left},${margin.top})`}>
+        <line
+          className="marker-line"
+          x1={markerLineX1}
+          y1={markerLineY}
+          x2={markerLineX2}
+          y2={markerLineY}
+        />
+        <path d={`${lineGenerator(data)}`} />
+      </g>
     </svg>
   )
 }
