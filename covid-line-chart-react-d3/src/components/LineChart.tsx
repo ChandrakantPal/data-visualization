@@ -39,7 +39,12 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           y2={markerLineY}
         />
         <path d={`${lineGenerator(data)}`} />
-        <text textAnchor="middle" x={markerLineX1} y={markerLineY}>
+        <text
+          textAnchor="end"
+          alignmentBaseline="middle"
+          x={markerLineX1}
+          y={markerLineY}
+        >
           10,000
         </text>
       </g>
