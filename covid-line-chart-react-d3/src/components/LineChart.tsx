@@ -4,7 +4,7 @@ import { extent, line, max, scaleLinear, scaleTime } from 'd3'
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
 
-const margin = { top: 40, right: 40, bottom: 40, left: 90 }
+const margin = { top: 40, right: 40, bottom: 40, left: 150 }
 
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
@@ -42,7 +42,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         <text
           textAnchor="end"
           alignmentBaseline="middle"
-          x={markerLineX1}
+          x={markerLineX1 - 8}
           y={markerLineY}
         >
           10,000
