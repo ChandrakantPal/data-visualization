@@ -25,6 +25,8 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
     .x((d) => xScale(xValue(d)))
     .y((d) => yScale(yValue(d)))
 
+  const mostRecentDate = xScale.domain()[1]
+
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
