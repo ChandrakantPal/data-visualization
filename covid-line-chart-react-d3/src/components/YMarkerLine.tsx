@@ -1,6 +1,10 @@
 import { FC } from 'react'
 
-const YMarkerLine: FC<{ value: number; yScale: any }> = ({ value, yScale }) => {
+const YMarkerLine: FC<{ value: number; yScale: any; innerWidth: number }> = ({
+  value,
+  yScale,
+  innerWidth,
+}) => {
   const markerLineY = yScale(value)
   const markerLineX1 = 0
   const markerLineX2 = innerWidth
