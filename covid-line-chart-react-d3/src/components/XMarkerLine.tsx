@@ -18,12 +18,12 @@ const XMarkerLine: FC<{ value: Date; xScale: any; innerHeight: number }> = ({
         y2={markerLineY2}
       />
       <text
-        textAnchor="end"
-        alignmentBaseline="middle"
-        x={markerLineX - 8}
-        y={markerLineY1}
+        textAnchor="middle"
+        alignmentBaseline="hanging"
+        x={markerLineX}
+        y={markerLineY2 + 8}
       >
-        10,000
+        now
       </text>
     </>
   )
