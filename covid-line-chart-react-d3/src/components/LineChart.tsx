@@ -28,7 +28,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
-        <YMarkerLine value={10000} yScale={yScale} />
+        <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
         <path d={`${lineGenerator(data)}`} />
       </g>
     </svg>
