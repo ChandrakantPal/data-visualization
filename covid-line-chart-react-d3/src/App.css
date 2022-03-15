@@ -24,3 +24,7 @@ text {
 .domain {
   display: none;
 }
+
+.tick line {
+  stroke: #bbbbbb;
+}
