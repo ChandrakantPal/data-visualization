@@ -38,7 +38,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           xScale={xScale}
           innerHeight={innerHeight}
         />
-        <XAxis xScale={xScale} />
+        <XAxis xScale={xScale} innerHeight={innerHeight} />
         <path d={`${lineGenerator(data)}`} />
       </g>
     </svg>
