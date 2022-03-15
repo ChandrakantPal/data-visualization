@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { extent, line, max, scaleLinear, scaleTime } from 'd3'
 import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
+import XAxis from './XAxis'
 
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
@@ -37,6 +38,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           xScale={xScale}
           innerHeight={innerHeight}
         />
+        <XAxis xScale={xScale} />
         <path d={`${lineGenerator(data)}`} />
       </g>
     </svg>
