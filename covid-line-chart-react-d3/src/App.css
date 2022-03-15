@@ -28,3 +28,8 @@ text {
 .tick line {
   stroke: #bbbbbb;
 }
+
+.tick text {
+  fill: #565656;
+  font-size: 14px;
+}
