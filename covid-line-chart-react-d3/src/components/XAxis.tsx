@@ -8,7 +8,7 @@ const XAxis: FC<{ xScale: any; innerHeight: number }> = ({
   const ref = useRef()
   useEffect(() => {
     const xAxisG = select(ref.current)
-    const xAxis = axisBottom(xScale).tickSize(-innerHeight)
+    const xAxis = axisBottom(xScale).tickSize(-innerHeight).tickPadding(18)
     xAxisG.call(xAxis)
   }, [])
 
