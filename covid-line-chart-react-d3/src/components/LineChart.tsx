@@ -3,6 +3,7 @@ import { extent, line, max, scaleLinear, scaleTime } from 'd3'
 import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
 import XAxis from './XAxis'
+import YAxis from './YAxis'
 
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
@@ -32,14 +33,15 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
+        <XAxis xScale={xScale} innerHeight={innerHeight} />
+        <YAxis yScale={yScale} innerWidth={innerWidth} />
+        <path d={`${lineGenerator(data)}`} />
         <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
         <XMarkerLine
           value={mostRecentDate}
           xScale={xScale}
           innerHeight={innerHeight}
         />
-        <XAxis xScale={xScale} innerHeight={innerHeight} />
-        <path d={`${lineGenerator(data)}`} />
       </g>
     </svg>
   )
