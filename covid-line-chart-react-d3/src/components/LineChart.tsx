@@ -36,12 +36,12 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         <XAxis xScale={xScale} innerHeight={innerHeight} />
         <YAxis yScale={yScale} innerWidth={innerWidth} />
         <path d={`${lineGenerator(data)}`} />
-        <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
+        {/* <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
         <XMarkerLine
           value={mostRecentDate}
           xScale={xScale}
           innerHeight={innerHeight}
-        />
+        /> */}
       </g>
     </svg>
   )
