@@ -1,7 +1,8 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 
 const YAxis: FC<{ yScale: any }> = ({ yScale }) => {
-  return <div>YAxis</div>
+  const ref = useRef()
+  return <g ref={ref} />
 }
 
 export default YAxis
