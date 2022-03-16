@@ -8,7 +8,8 @@ const YAxis: FC<{ yScale: any; innerWidth: number }> = ({
   const ref = useRef()
   useEffect(() => {
     const yAxisG = select(ref.current)
-    const yAxis = axisLeft(yScale).tickSize(-innerWidth)
+    const yAxis = axisLeft(yScale).tickSize(-innerWidth).tickPadding(18)
+    yAxisG.call(yAxis)
   }, [])
 
   return <g ref={ref} />
