@@ -8,7 +8,7 @@ import YAxis from './YAxis'
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
 
-const margin = { top: 40, right: 80, bottom: 80, left: 150 }
+const margin = { top: 40, right: 40, bottom: 60, left: 50 }
 
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
