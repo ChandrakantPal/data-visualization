@@ -10,7 +10,7 @@ const XAxis: FC<{ xScale: any; innerHeight: number }> = ({
     const xAxisG = select(ref.current)
     const xAxis = axisBottom(xScale).tickSize(-innerHeight).tickPadding(18)
     xAxisG.call(xAxis)
-  }, [])
+  }, [xScale, innerHeight])
 
   return <g transform={`translate(0,${innerHeight})`} ref={ref} />
 }
