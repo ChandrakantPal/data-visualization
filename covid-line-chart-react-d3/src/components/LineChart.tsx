@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { extent, line, max, scaleLinear, scaleTime } from 'd3'
+import { extent, line, max, scaleLinear, scaleLog, scaleTime } from 'd3'
 import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
 import XAxis from './XAxis'
@@ -20,7 +20,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
 
   const xScale = scaleTime().domain(extent(data, xValue)).range([0, innerWidth])
 
-  const yScale = scaleLinear()
+  const yScale = scaleLog()
     .domain([0, max(data, yValue)])
     .range([innerHeight, 0])
 
