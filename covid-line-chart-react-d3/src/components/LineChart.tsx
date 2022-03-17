@@ -51,6 +51,13 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         >
           Cumulative Deaths
         </text>
+        <text
+          transform={`translate(${innerWidth / 2},${innerHeight + 40})`}
+          textAnchor="middle"
+          alignmentBaseline="hanging"
+        >
+          Time
+        </text>
       </g>
     </svg>
   )
