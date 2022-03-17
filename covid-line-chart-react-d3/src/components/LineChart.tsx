@@ -46,12 +46,14 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           Global Coronavirus Deaths Over Time
         </text>
         <text
+          className="axis-label"
           transform={`translate(-40,${innerHeight / 2}) rotate(-90)`}
           textAnchor="middle"
         >
           Cumulative Deaths
         </text>
         <text
+          className="axis-label"
           transform={`translate(${innerWidth / 2},${innerHeight + 40})`}
           textAnchor="middle"
           alignmentBaseline="hanging"
