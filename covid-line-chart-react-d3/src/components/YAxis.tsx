@@ -13,7 +13,7 @@ const YAxis: FC<{ yScale: any; innerWidth: number }> = ({
       .tickPadding(18)
       .ticks(10, '~s')
     yAxisG.call(yAxis)
-  }, [])
+  }, [yScale, innerWidth])
 
   return <g ref={ref} />
 }
