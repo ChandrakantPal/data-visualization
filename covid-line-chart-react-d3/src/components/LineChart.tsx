@@ -21,7 +21,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   const xScale = scaleTime().domain(extent(data, xValue)).range([0, innerWidth])
 
   const yScale = scaleLog()
-    .domain([0, max(data, yValue)])
+    .domain([1, max(data, yValue)])
     .range([innerHeight, 0])
 
   const lineGenerator = line()
