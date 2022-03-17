@@ -45,6 +45,12 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         <text transform={`translate(${innerHeight / 2},0)`} textAnchor="middle">
           Global Coronavirus Deaths Over Time
         </text>
+        <text
+          transform={`translate(-40,${innerHeight / 2}) rotate(-90)`}
+          textAnchor="middle"
+        >
+          Cumulative Deaths
+        </text>
       </g>
     </svg>
   )
