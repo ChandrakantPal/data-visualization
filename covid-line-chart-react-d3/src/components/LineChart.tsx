@@ -42,6 +42,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           xScale={xScale}
           innerHeight={innerHeight}
         /> */}
+        <text>Global Coronavirus Deaths Over Time</text>
       </g>
     </svg>
   )
