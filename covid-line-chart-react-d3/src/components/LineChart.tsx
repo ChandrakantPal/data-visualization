@@ -8,7 +8,7 @@ import YAxis from './YAxis'
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
 
-const margin = { top: 40, right: 40, bottom: 60, left: 50 }
+const margin = { top: 40, right: 40, bottom: 80, left: 100 }
 
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
@@ -42,7 +42,9 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           xScale={xScale}
           innerHeight={innerHeight}
         /> */}
-        <text>Global Coronavirus Deaths Over Time</text>
+        <text transform={`translate(${innerHeight / 2},0)`} textAnchor="middle">
+          Global Coronavirus Deaths Over Time
+        </text>
       </g>
     </svg>
   )
