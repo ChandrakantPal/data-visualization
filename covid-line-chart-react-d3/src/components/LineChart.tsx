@@ -43,7 +43,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
           innerHeight={innerHeight}
         /> */}
         <text transform={`translate(${innerHeight / 2},0)`} textAnchor="middle">
-          Global Coronavirus Deaths Over Time
+          Global Coronavirus Deaths Over Time By Country
         </text>
         <text
           className="axis-label"
