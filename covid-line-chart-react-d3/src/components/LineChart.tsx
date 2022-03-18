@@ -35,7 +35,9 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
       <g transform={`translate(${margin.left},${margin.top})`}>
         <XAxis xScale={xScale} innerHeight={innerHeight} />
         <YAxis yScale={yScale} innerWidth={innerWidth} />
-        <path d={`${lineGenerator(data)}`} />
+        {data.map((countryData: any) => (
+          <path d={`${lineGenerator(countryData)}`} />
+        ))}
         {/* <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
         <XMarkerLine
           value={mostRecentDate}
