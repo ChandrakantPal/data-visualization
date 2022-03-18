@@ -7,6 +7,8 @@ const sum = (accumulator: number, currentValue: number) =>
 const parseDay = timeParse('%m/%d/%y')
 
 const transform = (rawData: any) => {
+  // Filter out rows that represent provinces or state
+  const countriesData = rawData.filter((d: any) => !d['Province/State'])
   const days = rawData.columns.slice(4)
   return days.map((day: any) => ({
     date: parseDay(day),
