@@ -18,10 +18,18 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
 
-  const xScale = scaleTime().domain(extent(data, xValue)).range([0, innerWidth])
+  const allData = data.reduce(
+    (accumulator: any, countryTimeseries: any) =>
+      accumulator.concat(countryTimeseries),
+    []
+  )
+
+  const xScale = scaleTime()
+    .domain(extent(allData, xValue))
+    .range([0, innerWidth])
 
   const yScale = scaleLog()
-    .domain([1, max(data, yValue)])
+    .domain([1, max(allData, yValue)])
     .range([innerHeight, 0])
 
   const lineGenerator = line()
