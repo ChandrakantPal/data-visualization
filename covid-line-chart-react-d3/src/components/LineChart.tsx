@@ -24,17 +24,19 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
     []
   )
 
+  const epsilon = 1
+
   const xScale = scaleTime()
     .domain(extent(allData, xValue))
     .range([0, innerWidth])
 
   const yScale = scaleLog()
-    .domain([1, max(allData, yValue)])
+    .domain([epsilon, max(allData, yValue)])
     .range([innerHeight, 0])
 
   const lineGenerator = line()
     .x((d) => xScale(xValue(d)))
-    .y((d) => yScale(yValue(d)))
+    .y((d) => yScale(epsilon + yValue(d)))
 
   const mostRecentDate = xScale.domain()[1]
 
