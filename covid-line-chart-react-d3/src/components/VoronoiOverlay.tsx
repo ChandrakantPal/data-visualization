@@ -4,8 +4,16 @@ import { Delaunay } from 'd3'
 const VoronoiOverlay: FC<{
   innerWidth: number
   innerHeight: number
-  points: any
-}> = ({ innerHeight, innerWidth, points }) => {
+  allData: any
+  xScale: any
+  xValue: any
+  yScale: any
+  yValue: any
+}> = ({ innerHeight, innerWidth, allData, xScale, xValue, yScale, yValue }) => {
+  const points = allData.map((d: any) => [
+    xScale(xValue(d)),
+    1 + yScale(yValue(d)),
+  ])
   const delaunay = Delaunay.from(points)
   const voronoi = delaunay.voronoi([0, 0, innerWidth, innerHeight])
   return (
