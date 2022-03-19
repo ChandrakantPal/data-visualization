@@ -8,7 +8,7 @@ body {
 
 path {
   fill: none;
-  stroke: black;
+  /* stroke: black; */
   stroke-width: 5px;
 }
 
