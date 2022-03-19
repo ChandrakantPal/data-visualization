@@ -4,6 +4,7 @@ import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
 import XAxis from './XAxis'
 import YAxis from './YAxis'
+import VoronoiOverlay from './VoronoiOverlay'
 
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
@@ -76,6 +77,15 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         >
           Time
         </text>
+        <VoronoiOverlay
+          allData={allData}
+          innerHeight={innerHeight}
+          innerWidth={innerWidth}
+          xScale={xScale}
+          xValue={xValue}
+          yScale={yScale}
+          yValue={yValue}
+        />
       </g>
     </svg>
   )
