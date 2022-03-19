@@ -47,9 +47,10 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         <YAxis yScale={yScale} innerWidth={innerWidth} />
         {data.map((countryData: any) => (
           <path
-            stroke={`rgb(${Math.random() * 255},${Math.random() * 255},${
-              Math.random() * 255
-            })`}
+            // stroke={`rgb(${Math.random() * 255},${Math.random() * 255},${
+            //   Math.random() * 255
+            // })`}
+            stroke="gray"
             d={`${lineGenerator(countryData)}`}
           />
         ))}
