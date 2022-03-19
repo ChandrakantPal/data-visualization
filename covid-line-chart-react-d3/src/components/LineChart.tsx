@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { extent, line, max, scaleLinear, scaleLog, scaleTime } from 'd3'
 import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
@@ -39,6 +39,10 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
     .y((d) => yScale(epsilon + yValue(d)))
 
   const mostRecentDate = xScale.domain()[1]
+
+  const handleVoronoiHover = useCallback(() => {
+    console.log('hovered')
+  }, [])
 
   return (
     <svg width={width} height={height}>
