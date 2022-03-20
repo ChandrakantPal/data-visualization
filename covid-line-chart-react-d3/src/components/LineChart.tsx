@@ -1,5 +1,13 @@
-import { FC, useCallback } from 'react'
-import { extent, line, max, scaleLinear, scaleLog, scaleTime } from 'd3'
+import { FC, useCallback, useMemo, useState } from 'react'
+import {
+  extent,
+  line,
+  max,
+  scaleLinear,
+  scaleLog,
+  scaleTime,
+  timeFormat,
+} from 'd3'
 import YMarkerLine from './YMarkerLine'
 import XMarkerLine from './XMarkerLine'
 import XAxis from './XAxis'
@@ -9,40 +17,58 @@ import VoronoiOverlay from './VoronoiOverlay'
 const xValue = (d: any) => d.date
 const yValue = (d: any) => d.deathTotal
 
-const margin = { top: 40, right: 40, bottom: 80, left: 100 }
+const margin = { top: 50, right: 40, bottom: 80, left: 100 }
 
+const formatDate = timeFormat('%b %d')
 const LineChart: FC<{ data: any; width: number; height: number }> = ({
   data,
   width,
   height,
 }) => {
+  const [activeCountryName, setActiveCountryName] = useState()
+
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
 
-  const allData = data.reduce(
-    (accumulator: any, countryTimeseries: any) =>
-      accumulator.concat(countryTimeseries),
-    []
+  const allData = useMemo(
+    () =>
+      data.reduce(
+        (accumulator: any, countryTimeseries: any) =>
+          accumulator.concat(countryTimeseries),
+        []
+      ),
+    [data]
   )
 
   const epsilon = 1
 
-  const xScale = scaleTime()
-    .domain(extent(allData, xValue))
-    .range([0, innerWidth])
+  const xScale = useMemo(
+    () => scaleTime().domain(extent(allData, xValue)).range([0, innerWidth]),
+    [allData, xValue]
+  )
 
-  const yScale = scaleLog()
-    .domain([epsilon, max(allData, yValue)])
-    .range([innerHeight, 0])
+  const yScale = useMemo(
+    () =>
+      scaleLog()
+        .domain([epsilon, max(allData, yValue)])
+        .range([innerHeight, 0]),
+    [epsilon, allData, yValue]
+  )
 
-  const lineGenerator = line()
-    .x((d) => xScale(xValue(d)))
-    .y((d) => yScale(epsilon + yValue(d)))
+  const lineGenerator = useMemo(
+    () =>
+      line()
+        .x((d) => xScale(xValue(d)))
+        .y((d) => yScale(epsilon + yValue(d))),
+    [xScale, xValue, yScale, yValue, epsilon]
+  )
 
   const mostRecentDate = xScale.domain()[1]
 
-  const handleVoronoiHover = useCallback(() => {
-    console.log('hovered')
+  console.log(activeCountryName)
+
+  const handleVoronoiHover = useCallback((d) => {
+    setActiveCountryName(d.countryName)
   }, [])
 
   return (
@@ -50,17 +76,17 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
       <g transform={`translate(${margin.left},${margin.top})`}>
         <XAxis xScale={xScale} innerHeight={innerHeight} />
         <YAxis yScale={yScale} innerWidth={innerWidth} />
-        {data.map((countryData: any) => (
-          <path className="marker-line" d={`${lineGenerator(countryData)}`} />
-        ))}
-        {/* <YMarkerLine value={10000} yScale={yScale} innerWidth={innerWidth} />
-        <XMarkerLine
-          value={mostRecentDate}
-          xScale={xScale}
-          innerHeight={innerHeight}
-        /> */}
-        <text transform={`translate(${innerHeight / 2},0)`} textAnchor="middle">
-          Global Coronavirus Deaths Over Time By Country
+        {data.map((countryTimeseries: any) => {
+          return (
+            <path
+              className="marker-line"
+              d={`${lineGenerator(countryTimeseries)}`}
+            />
+          )
+        })}
+
+        <text transform={`translate(${innerWidth / 2},0)`} textAnchor="middle">
+          Global Coronavirus Deaths Over Time by Country
         </text>
         <text
           className="axis-label"
@@ -71,21 +97,32 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
         </text>
         <text
           className="axis-label"
-          transform={`translate(${innerWidth / 2},${innerHeight + 40})`}
           textAnchor="middle"
           alignmentBaseline="hanging"
+          transform={`translate(${innerWidth / 2},${innerHeight + 40})`}
         >
           Time
         </text>
-        <VoronoiOverlay
-          allData={allData}
-          innerHeight={innerHeight}
-          innerWidth={innerWidth}
-          xScale={xScale}
-          xValue={xValue}
-          yScale={yScale}
-          yValue={yValue}
-        />
+        {allData.length > 0 && (
+          <VoronoiOverlay
+            onHover={handleVoronoiHover}
+            innerHeight={innerHeight}
+            innerWidth={innerWidth}
+            allData={allData}
+            lineGenerator={lineGenerator}
+          />
+        )}
+        {activeCountryName ? (
+          <path
+            className="marker-line active"
+            d={`${lineGenerator(
+              data.find(
+                (countryTimeseries: any) =>
+                  countryTimeseries.countryName === activeCountryName
+              )
+            )}`}
+          />
+        ) : null}
       </g>
     </svg>
   )
