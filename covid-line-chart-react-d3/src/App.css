@@ -6,11 +6,11 @@ body {
     sans-serif;
 }
 
-path {
+/* path {
   fill: none;
   stroke: black;
   stroke-width: 5px;
-}
+} */
 
 .marker-line {
   stroke: #a2a2a2;
