@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { csv, timeParse } from 'd3'
+import { CovidData } from './types'
 
 const sum = (accumulator: number, currentValue: number) =>
   accumulator + currentValue
@@ -22,7 +23,7 @@ const transform = (rawData: any) => {
 }
 
 export const useData = (csvUrl: string) => {
-  const [data, setData] = useState<any[]>([])
+  const [data, setData] = useState<CovidData[][]>([])
 
   useEffect(() => {
     csv(csvUrl).then((rawData) => {
