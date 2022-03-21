@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   extent,
   line,
@@ -13,24 +13,25 @@ import XMarkerLine from './XMarkerLine'
 import XAxis from './XAxis'
 import YAxis from './YAxis'
 import VoronoiOverlay from './VoronoiOverlay'
+import { CovidData } from '../utils/types'
 
-const xValue = (d: any) => d.date
-const yValue = (d: any) => d.deathTotal
+const xValue = (d: CovidData) => d.date
+const yValue = (d: CovidData) => d.deathTotal
 
 const margin = { top: 50, right: 40, bottom: 80, left: 100 }
 
 const formatDate = timeFormat('%b %d')
-const LineChart: FC<{ data: any; width: number; height: number }> = ({
+const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
   data,
   width,
   height,
 }) => {
-  const [activeCountryName, setActiveCountryName] = useState()
+  const [activeCountryName, setActiveCountryName] = useState<string>('')
 
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
 
-  const allData = useMemo(
+  const allData: CovidData[] = useMemo(
     () =>
       data.reduce(
         (accumulator: any, countryTimeseries: any) =>
@@ -65,9 +66,7 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
 
   const mostRecentDate = xScale.domain()[1]
 
-  console.log(activeCountryName)
-
-  const handleVoronoiHover = useCallback((d) => {
+  const handleVoronoiHover = useCallback((d: CovidData) => {
     setActiveCountryName(d.countryName)
   }, [])
 
@@ -76,14 +75,13 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
       <g transform={`translate(${margin.left},${margin.top})`}>
         <XAxis xScale={xScale} innerHeight={innerHeight} />
         <YAxis yScale={yScale} innerWidth={innerWidth} />
-        {data.map((countryTimeseries: any) => {
-          return (
-            <path
-              className="marker-line"
-              d={`${lineGenerator(countryTimeseries)}`}
-            />
-          )
-        })}
+        {data.map((countryTimeseries, i) => (
+          <path
+            key={i}
+            className="marker-line"
+            d={`${lineGenerator(countryTimeseries)}`}
+          />
+        ))}
 
         <text transform={`translate(${innerWidth / 2},0)`} textAnchor="middle">
           Global Coronavirus Deaths Over Time by Country
@@ -112,13 +110,13 @@ const LineChart: FC<{ data: any; width: number; height: number }> = ({
             lineGenerator={lineGenerator}
           />
         )}
-        {activeCountryName ? (
+        {activeCountryName !== '' ? (
           <path
             className="marker-line active"
             d={`${lineGenerator(
-              data.find(
-                (countryTimeseries: any) =>
-                  countryTimeseries.countryName === activeCountryName
+              data?.find(
+                (countryTimeseries) =>
+                  countryTimeseries[0].countryName === activeCountryName
               )
             )}`}
           />
