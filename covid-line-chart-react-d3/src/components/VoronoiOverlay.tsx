@@ -1,30 +1,39 @@
 import { FC, useMemo } from 'react'
-import * as d3 from 'd3'
+import { CovidData } from '../utils/types'
+import { Delaunay, Line } from 'd3'
 
 const VoronoiOverlay: FC<{
   innerWidth: number
   innerHeight: number
-  allData: any
-  lineGenerator: any
-  onHover: (hoverId: any) => void
-}> = ({ innerHeight, innerWidth, allData, lineGenerator, onHover }) => {
+  allData: CovidData[]
+  lineGenerator: Line<[number, number]>
+  onHover: (hoverId: CovidData) => void
+}> = ({
+  innerHeight = 500,
+  innerWidth = 960,
+  allData,
+  lineGenerator,
+  onHover,
+}) => {
   return useMemo(() => {
     console.log('memoizing')
-    const points = allData.map((d: any) => [
+    const points = allData?.map((d) => [
       lineGenerator.x()(d),
       lineGenerator.y()(d),
     ])
-    const delaunay = d3.Delaunay.from(points)
+    const delaunay = Delaunay.from(points)
     const voronoi = delaunay.voronoi([0, 0, innerWidth, innerHeight])
     console.log({ points, delaunay, voronoi })
 
     return (
       <g className="voronoi">
-        {points.map((point: any, i: number) => (
+        {points?.map((point, i) => (
           <path
+            className="voronoi-cell"
+            key={i}
             onMouseEnter={() => onHover(allData[i])}
-            fill="none"
-            stroke="pink"
+            // fill="none"
+            // stroke="pink"
             d={voronoi.renderCell(i)}
           />
         ))}
