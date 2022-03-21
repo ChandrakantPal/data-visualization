@@ -6,11 +6,11 @@ body {
     sans-serif;
 }
 
-/* path {
+path {
   fill: none;
-  stroke: black;
+  /* stroke: black; */
   stroke-width: 5px;
-} */
+}
 
 .marker-line {
   stroke: #a2a2a2;
@@ -37,4 +37,10 @@ text {
 .axis-label {
   fill: #808080;
   font-size: 24px;
+}
+
+.voronoi-cell {
+  stroke-width: 1px;
+  fill: none;
+  stroke: pink;
 }
