@@ -14,11 +14,14 @@ const transform = (rawData: any) => {
   const days = rawData.columns.slice(4)
   return countriesData.map((d: any) => {
     const countryName = d['Country/Region']
-    return days.map((day: any) => ({
+    const countryTimeseries = days.map((day: any) => ({
       date: parseDay(day),
       deathTotal: +d[day],
       countryName,
     }))
+
+    countryTimeseries.countryName = countryName
+    return countryTimeseries
   })
 }
 
