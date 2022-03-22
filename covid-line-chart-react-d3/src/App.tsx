@@ -12,7 +12,6 @@ const csvUrl =
 
 const App = () => {
   const data = useData(csvUrl)
-  console.log({ data })
 
   return data ? (
     <LineChart data={data} width={width} height={height} />
