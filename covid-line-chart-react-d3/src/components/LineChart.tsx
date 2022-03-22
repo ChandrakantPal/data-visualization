@@ -116,7 +116,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
             d={`${lineGenerator(
               data?.find(
                 (countryTimeseries) =>
-                  countryTimeseries[0].countryName === activeCountryName
+                  countryTimeseries.countryName === activeCountryName
               )
             )}`}
           />
