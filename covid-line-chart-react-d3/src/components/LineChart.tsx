@@ -26,7 +26,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
   width,
   height,
 }) => {
-  const [activeCountryName, setActiveCountryName] = useState<string>('')
+  const [activeRow, setActiveRow] = useState<CovidData | null>(null)
 
   const innerWidth = width - margin.left - margin.right
   const innerHeight = height - margin.top - margin.bottom
@@ -66,9 +66,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
 
   const mostRecentDate = xScale.domain()[1]
 
-  const handleVoronoiHover = useCallback((d: CovidData) => {
-    setActiveCountryName(d.countryName)
-  }, [])
+  const handleVoronoiHover = useCallback(setActiveRow, [])
 
   return (
     <svg width={width} height={height}>
@@ -110,18 +108,23 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
             lineGenerator={lineGenerator}
           />
         )}
-        {activeCountryName !== '' ? (
-          <path
-            className="marker-line active"
-            d={`${lineGenerator(
-              data?.find(
-                (countryTimeseries) =>
-                  countryTimeseries.countryName === activeCountryName
-              )
-            )}`}
-          >
-            <title>{activeCountryName}</title>
-          </path>
+        {activeRow ? (
+          <>
+            <path
+              className="marker-line active"
+              d={`${lineGenerator(
+                data?.find(
+                  (countryTimeseries) =>
+                    countryTimeseries.countryName === activeRow.countryName
+                )
+              )}`}
+            />
+            <circle
+              cx={lineGenerator.x()(activeRow)}
+              cy={lineGenerator.y()(activeRow)}
+              r={10}
+            />
+          </>
         ) : null}
       </g>
     </svg>
