@@ -119,7 +119,9 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
                   countryTimeseries.countryName === activeCountryName
               )
             )}`}
-          />
+          >
+            <title>{activeCountryName}</title>
+          </path>
         ) : null}
       </g>
     </svg>
