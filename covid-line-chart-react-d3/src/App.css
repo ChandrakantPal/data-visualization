@@ -34,7 +34,8 @@ text {
   font-size: 14px;
 }
 
-.axis-label {
+.axis-label,
+.tooltip {
   fill: #808080;
   font-size: 24px;
 }
@@ -49,4 +50,8 @@ text {
 .marker-line.active {
   stroke: black;
   stroke-width: 3px;
+}
+
+.tooltip {
+  fill: black;
 }
