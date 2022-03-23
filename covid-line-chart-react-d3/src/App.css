@@ -40,7 +40,13 @@ text {
 }
 
 .voronoi-cell {
-  stroke-width: 1px;
+  /* stroke-width: 1px; */
   fill: none;
-  stroke: pink;
+  /* stroke: pink; */
+  pointer-events: all;
+}
+
+.marker-line.active {
+  stroke: black;
+  stroke-width: 3px;
 }
