@@ -125,7 +125,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
               )},${lineGenerator.y()(activeRow)})`}
             >
               <circle r={10} />
-              <text>text</text>
+              <text textAnchor="end">text</text>
             </g>
           </>
         ) : null}
