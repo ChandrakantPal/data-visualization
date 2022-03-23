@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   extent,
+  format,
   line,
   max,
   scaleLinear,
@@ -21,6 +22,7 @@ const yValue = (d: CovidData) => d.deathTotal
 const margin = { top: 50, right: 40, bottom: 80, left: 100 }
 
 const formatDate = timeFormat('%b %d, %Y')
+const formatComa = format(',')
 const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
   data,
   width,
@@ -126,8 +128,8 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
             >
               <circle r={10} />
               <text className="tooltip" x={-10} y={-10} textAnchor="end">
-                {activeRow.countryName}: {activeRow.deathTotal} deaths as of{' '}
-                {formatDate(activeRow.date)}
+                {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
+                deaths as of {formatDate(activeRow.date)}
               </text>
             </g>
           </>
