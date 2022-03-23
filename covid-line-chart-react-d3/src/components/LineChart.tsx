@@ -20,7 +20,7 @@ const yValue = (d: CovidData) => d.deathTotal
 
 const margin = { top: 50, right: 40, bottom: 80, left: 100 }
 
-const formatDate = timeFormat('%b %d')
+const formatDate = timeFormat('%b %d, %Y')
 const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
   data,
   width,
@@ -127,7 +127,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
               <circle r={10} />
               <text x={-10} y={-10} textAnchor="end">
                 {activeRow.countryName}: {activeRow.deathTotal} deaths as of{' '}
-                {activeRow.date}
+                {formatDate(activeRow.date)}
               </text>
             </g>
           </>
