@@ -119,11 +119,14 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
                 )
               )}`}
             />
-            <circle
-              cx={lineGenerator.x()(activeRow)}
-              cy={lineGenerator.y()(activeRow)}
-              r={10}
-            />
+            <g
+              transform={`translate(${lineGenerator.x()(
+                activeRow
+              )},${lineGenerator.y()(activeRow)})`}
+            >
+              <circle r={10} />
+              <text>text</text>
+            </g>
           </>
         ) : null}
       </g>
