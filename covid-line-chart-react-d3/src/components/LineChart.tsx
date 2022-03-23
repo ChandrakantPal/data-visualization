@@ -126,7 +126,8 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
             >
               <circle r={10} />
               <text x={-10} y={-10} textAnchor="end">
-                text
+                {activeRow.countryName}: {activeRow.deathTotal} deaths as of{' '}
+                {activeRow.date}
               </text>
             </g>
           </>
