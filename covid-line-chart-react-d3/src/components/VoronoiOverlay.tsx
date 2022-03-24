@@ -7,6 +7,7 @@ const VoronoiOverlay: FC<{
   innerHeight: number
   allData: CovidData[]
   lineGenerator: Line<[number, number]>
+  margin: { top: number; right: number; left: number; bottom: number }
   onHover: (hoverId: CovidData) => void
 }> = ({
   innerHeight = 500,
@@ -14,6 +15,7 @@ const VoronoiOverlay: FC<{
   allData,
   lineGenerator,
   onHover,
+  margin,
 }) => {
   return useMemo(() => {
     console.log('memoizing')
@@ -22,7 +24,12 @@ const VoronoiOverlay: FC<{
       lineGenerator.y()(d),
     ])
     const delaunay = Delaunay.from(points)
-    const voronoi = delaunay.voronoi([0, 0, innerWidth + 100, innerHeight])
+    const voronoi = delaunay.voronoi([
+      0,
+      0,
+      innerWidth + margin.right,
+      innerHeight,
+    ])
     console.log({ points, delaunay, voronoi })
 
     return (
