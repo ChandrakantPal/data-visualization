@@ -131,6 +131,10 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
                 {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
                 deaths as of {formatDate(activeRow.date)}
               </text>
+              <text className="tooltip-stroke" x={-10} y={-10} textAnchor="end">
+                {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
+                deaths as of {formatDate(activeRow.date)}
+              </text>
             </g>
           </>
         ) : null}
