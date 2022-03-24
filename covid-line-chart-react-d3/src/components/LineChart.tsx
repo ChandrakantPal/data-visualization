@@ -104,6 +104,7 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
         </text>
         {allData.length > 0 && (
           <VoronoiOverlay
+            margin={margin}
             onHover={handleVoronoiHover}
             innerHeight={innerHeight}
             innerWidth={innerWidth}
