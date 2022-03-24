@@ -83,7 +83,9 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
           />
         ))}
 
-        <text>Global Coronavirus Deaths Over Time by Country</text>
+        <text className="title">
+          Global Coronavirus Deaths Over Time by Country
+        </text>
         <text
           className="axis-label"
           transform={`translate(-40,${innerHeight / 2}) rotate(-90)`}
