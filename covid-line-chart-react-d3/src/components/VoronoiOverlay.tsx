@@ -22,7 +22,7 @@ const VoronoiOverlay: FC<{
       lineGenerator.y()(d),
     ])
     const delaunay = Delaunay.from(points)
-    const voronoi = delaunay.voronoi([0, 0, innerWidth, innerHeight])
+    const voronoi = delaunay.voronoi([0, 0, innerWidth + 100, innerHeight])
     console.log({ points, delaunay, voronoi })
 
     return (
