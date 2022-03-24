@@ -11,7 +11,8 @@ const Tooltip: FC<{ className: string; activeRow: CovidData }> = ({
 }) => {
   return (
     <text className={className} x={-10} y={-10} textAnchor="end">
-      {activeRow.countryName}: {formatComa(activeRow.deathTotal)} deaths as of{' '}
+      {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
+      {activeRow.deathTotal > 1 ? 'deaths' : 'death'} as of{' '}
       {formatDate(activeRow.date)}
     </text>
   )
