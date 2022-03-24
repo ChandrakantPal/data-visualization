@@ -35,9 +35,10 @@ text {
 }
 
 .axis-label,
-.tooltip {
+.tooltip,
+.title {
   fill: #808080;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .voronoi-cell {
@@ -52,6 +53,7 @@ text {
   stroke-width: 3px;
 }
 
-.tooltip {
+.tooltip,
+.title {
   fill: black;
 }
