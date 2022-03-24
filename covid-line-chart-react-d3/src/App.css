@@ -57,3 +57,7 @@ text {
 .title {
   fill: black;
 }
+
+.title-stroke {
+  stroke: white;
+}
