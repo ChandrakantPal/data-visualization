@@ -15,6 +15,7 @@ import XAxis from './XAxis'
 import YAxis from './YAxis'
 import VoronoiOverlay from './VoronoiOverlay'
 import { CovidData } from '../utils/types'
+import Tooltip from './Tooltip'
 
 const xValue = (d: CovidData) => d.date
 const yValue = (d: CovidData) => d.deathTotal
@@ -127,14 +128,8 @@ const LineChart: FC<{ data: CovidData[][]; width: number; height: number }> = ({
               )},${lineGenerator.y()(activeRow)})`}
             >
               <circle r={10} />
-              <text className="tooltip" x={-10} y={-10} textAnchor="end">
-                {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
-                deaths as of {formatDate(activeRow.date)}
-              </text>
-              <text className="tooltip-stroke" x={-10} y={-10} textAnchor="end">
-                {activeRow.countryName}: {formatComa(activeRow.deathTotal)}{' '}
-                deaths as of {formatDate(activeRow.date)}
-              </text>
+              <Tooltip className="tooltip-stroke" activeRow={activeRow} />
+              <Tooltip className="tooltip" activeRow={activeRow} />
             </g>
           </>
         ) : null}
