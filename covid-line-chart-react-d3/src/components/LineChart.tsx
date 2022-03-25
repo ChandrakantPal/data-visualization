@@ -1,16 +1,5 @@
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
-import {
-  extent,
-  format,
-  line,
-  max,
-  scaleLinear,
-  scaleLog,
-  scaleTime,
-  timeFormat,
-} from 'd3'
-import YMarkerLine from './YMarkerLine'
-import XMarkerLine from './XMarkerLine'
+import { FC, useCallback, useMemo, useState } from 'react'
+import { extent, format, line, max, scaleLog, scaleTime, timeFormat } from 'd3'
 import XAxis from './XAxis'
 import YAxis from './YAxis'
 import VoronoiOverlay from './VoronoiOverlay'
