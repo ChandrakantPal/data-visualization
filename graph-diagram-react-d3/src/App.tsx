@@ -1,6 +1,12 @@
 import './App.css'
-import { forceCenter, forceLink, forceManyBody, forceSimulation } from 'd3'
-import { useRef } from 'react'
+import {
+  forceCenter,
+  forceLink,
+  forceManyBody,
+  forceSimulation,
+  select,
+} from 'd3'
+import { useEffect, useRef } from 'react'
 
 function App() {
   const ref = useRef()
@@ -13,6 +19,12 @@ function App() {
     .force('charge', forceManyBody())
     .force('link', forceLink(links))
     .force('center', forceCenter())
+
+  useEffect(() => {
+    const svgContainer = select(ref.current)
+    svgContainer.selectAll('circle').data(nodes).enter().append('circle')
+  }, [nodes])
+
   return <svg width={960} height={500} ref={ref}></svg>
 }
 
