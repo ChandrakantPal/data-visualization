@@ -29,6 +29,21 @@ function App() {
       .enter()
       .append('text')
       .text((node) => node.id)
+
+    const lines = svgContainer
+      .selectAll('line')
+      .data(links)
+      .enter()
+      .append('line')
+      .attr('stroke', (link) => link.color || 'black')
+
+    const circles = svgContainer
+      .selectAll('circle')
+      .data(nodes)
+      .enter()
+      .append('circle')
+      .attr('fill', (node) => node.color || 'gray')
+      .attr('r', (node) => node.size)
     simulation.on('tick', () => {
       text.attr('x', (node) => node.x).attr('y', (node) => node.y)
     })
