@@ -1,5 +1,5 @@
 export const nodes = [
-  { id: 'Arts Web' },
+  { id: 'Arts Web', size: 50 },
   { id: 'Community Vision' },
   { id: 'Silicon Valley Creates' },
 ]
