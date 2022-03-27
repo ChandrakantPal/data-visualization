@@ -23,7 +23,12 @@ function App() {
     const height = +svgContainer.attr('height')
     const centerX = width / 2
     const centerY = height / 2
-    svgContainer.selectAll('circle').data(nodes).enter().append('circle')
+    const text = svgContainer
+      .selectAll('text')
+      .data(nodes)
+      .enter()
+      .append('text')
+      .text((node) => node.id)
     simulation.on('tick', () => {
       console.log('ticks')
     })
