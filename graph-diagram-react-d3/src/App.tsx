@@ -30,7 +30,7 @@ function App() {
       .append('text')
       .text((node) => node.id)
     simulation.on('tick', () => {
-      console.log('ticks')
+      text.attr('x', (node) => node.x).attr('y', (node) => node.y)
     })
   }, [nodes])
 
