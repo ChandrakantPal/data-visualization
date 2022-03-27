@@ -45,7 +45,13 @@ function App() {
       .attr('fill', (node) => node.color || 'gray')
       .attr('r', (node) => node.size)
     simulation.on('tick', () => {
+      circles.attr('cx', (node) => node.x).attr('cy', (node) => node.y)
       text.attr('x', (node) => node.x).attr('y', (node) => node.y)
+      lines
+        .attr('x1', (link) => link.source.x)
+        .attr('y1', (link) => link.source.y)
+        .attr('x2', (link) => link.target.x)
+        .attr('y2', (link) => link.target.y)
     })
   }, [nodes])
 
