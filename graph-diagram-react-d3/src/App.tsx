@@ -45,7 +45,7 @@ function App() {
       .data(nodes)
       .enter()
       .append('circle')
-      .attr('fill', (node) => node.color || 'gray')
+      .attr('fill', 'gray')
       .attr('r', (node) => node.size)
     simulation.on('tick', () => {
       circles.attr('cx', (node) => node.x).attr('cy', (node) => node.y)
