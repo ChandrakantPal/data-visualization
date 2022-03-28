@@ -12,17 +12,18 @@ import { links, nodes } from './utils/data'
 function App() {
   const ref = useRef()
 
-  const simulation = forceSimulation(nodes)
-    .force('charge', forceManyBody())
-    .force('link', forceLink(links))
-    .force('center', forceCenter())
-
   useEffect(() => {
     const svgContainer = select(ref.current)
     const width = +svgContainer.attr('width')
     const height = +svgContainer.attr('height')
     const centerX = width / 2
     const centerY = height / 2
+
+    const simulation = forceSimulation(nodes)
+      .force('charge', forceManyBody())
+      .force('link', forceLink(links))
+      .force('center', forceCenter())
+
     const text = svgContainer
       .selectAll('text')
       .data(nodes)
