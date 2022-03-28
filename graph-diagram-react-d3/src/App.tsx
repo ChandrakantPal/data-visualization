@@ -20,7 +20,7 @@ function App() {
     const centerY = height / 2
 
     const simulation = forceSimulation(nodes)
-      .force('charge', forceManyBody())
+      .force('charge', forceManyBody().strength(-2000))
       .force('link', forceLink(links))
       .force('center', forceCenter(centerX, centerY))
 
