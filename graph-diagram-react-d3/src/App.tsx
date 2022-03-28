@@ -29,6 +29,7 @@ function App() {
       .data(nodes)
       .enter()
       .append('text')
+      .attr('text-anchor', 'middle')
       .text((node) => node.id)
 
     const lines = svgContainer
