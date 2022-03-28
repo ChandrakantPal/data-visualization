@@ -24,6 +24,14 @@ function App() {
       .force('link', forceLink(links))
       .force('center', forceCenter(centerX, centerY))
 
+    const circles = svgContainer
+      .selectAll('circle')
+      .data(nodes)
+      .enter()
+      .append('circle')
+      .attr('fill', 'gray')
+      .attr('r', (node) => node.size)
+
     const text = svgContainer
       .selectAll('text')
       .data(nodes)
@@ -40,13 +48,6 @@ function App() {
       .append('line')
       .attr('stroke', (link) => link.color || 'black')
 
-    const circles = svgContainer
-      .selectAll('circle')
-      .data(nodes)
-      .enter()
-      .append('circle')
-      .attr('fill', 'gray')
-      .attr('r', (node) => node.size)
     simulation.on('tick', () => {
       circles.attr('cx', (node) => node.x).attr('cy', (node) => node.y)
       text.attr('x', (node) => node.x).attr('y', (node) => node.y)
