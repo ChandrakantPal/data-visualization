@@ -22,7 +22,7 @@ function App() {
     const simulation = forceSimulation(nodes)
       .force('charge', forceManyBody())
       .force('link', forceLink(links))
-      .force('center', forceCenter())
+      .force('center', forceCenter(centerX, centerY))
 
     const text = svgContainer
       .selectAll('text')
