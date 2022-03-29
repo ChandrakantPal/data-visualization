@@ -7,7 +7,7 @@ import {
   select,
 } from 'd3'
 import { useEffect, useRef } from 'react'
-import { links, nodes } from './utils/data'
+import { links, MANY_BODY_STRENGTH, nodes } from './utils/data'
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -23,7 +23,7 @@ function App() {
     const centerY = height / 2
 
     const simulation = forceSimulation(nodes)
-      .force('charge', forceManyBody().strength(-2000))
+      .force('charge', forceManyBody().strength(MANY_BODY_STRENGTH))
       .force(
         'link',
         forceLink(links).distance((link) => link.distance)
