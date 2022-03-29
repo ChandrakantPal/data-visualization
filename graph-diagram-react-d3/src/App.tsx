@@ -24,7 +24,10 @@ function App() {
 
     const simulation = forceSimulation(nodes)
       .force('charge', forceManyBody().strength(-2000))
-      .force('link', forceLink(links))
+      .force(
+        'link',
+        forceLink(links).distance((link) => link.distance)
+      )
       .force('center', forceCenter(centerX, centerY))
 
     const circles = svgContainer
