@@ -7,7 +7,10 @@ import {
   select,
 } from 'd3'
 import { useEffect, useRef } from 'react'
-import { links, nodes } from './utils/data'
+import { links, nodes, MANY_BODY_STRENGTH } from './utils/data'
+
+const width = window.innerWidth
+const height = window.innerHeight
 
 function App() {
   const ref = useRef()
@@ -20,7 +23,7 @@ function App() {
     const centerY = height / 2
 
     const simulation = forceSimulation(nodes)
-      .force('charge', forceManyBody().strength(-2000))
+      .force('charge', forceManyBody().strength(MANY_BODY_STRENGTH))
       .force('link', forceLink(links))
       .force('center', forceCenter(centerX, centerY))
 
@@ -59,7 +62,7 @@ function App() {
     })
   }, [nodes])
 
-  return <svg width={960} height={500} ref={ref}></svg>
+  return <svg width={width} height={height} ref={ref}></svg>
 }
 
 export default App
