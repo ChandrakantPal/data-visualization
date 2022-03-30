@@ -1,7 +1,8 @@
 import { colors } from './colors'
+import { Link, Node } from './types'
 
-export const nodes = []
-export const links = []
+export const nodes: Node[] = []
+export const links: Link[] = []
 
 const MAIN_NODE_SIZE = 40
 const CHILD_NODE_SIZE = 15
@@ -13,14 +14,14 @@ export const MANY_BODY_STRENGTH = -20
 
 let i = 0
 
-const addMainNode = (node: { id: string }) => {
+const addMainNode = (node: Node) => {
   node.size = MAIN_NODE_SIZE
   nodes.push(node)
 }
 
 const addChildNode = (
-  parentNode,
-  childNode,
+  parentNode: Node,
+  childNode: Node,
   size = CHILD_NODE_SIZE,
   distance = DEFAULT_DISTANCE
 ) => {
@@ -33,7 +34,7 @@ const addChildNode = (
   })
 }
 
-const assembleChildNode = (parentNode, id: string, numLeaves = 20) => {
+const assembleChildNode = (parentNode: Node, id: string, numLeaves = 20) => {
   const childNode = { id }
   addChildNode(parentNode, childNode)
 
@@ -42,12 +43,11 @@ const assembleChildNode = (parentNode, id: string, numLeaves = 20) => {
   }
 }
 
-const connectMainNodes = (source, target) => {
+const connectMainNodes = (source: Node, target: Node) => {
   links.push({
     source,
     target,
     distance: MAIN_NODE_DISTANCE,
-    color: source.color,
   })
 }
 
