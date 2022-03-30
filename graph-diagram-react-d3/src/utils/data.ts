@@ -13,7 +13,7 @@ export const MANY_BODY_STRENGTH = -20
 
 let i = 0
 
-const addMainNode = (node) => {
+const addMainNode = (node: { id: string }) => {
   node.size = MAIN_NODE_SIZE
   nodes.push(node)
 }
