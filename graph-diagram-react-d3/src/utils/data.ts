@@ -33,7 +33,7 @@ const addChildNode = (
   })
 }
 
-const assembleChildNode = (parentNode, id, numLeaves = 20) => {
+const assembleChildNode = (parentNode, id: string, numLeaves = 20) => {
   const childNode = { id }
   addChildNode(parentNode, childNode)
 
