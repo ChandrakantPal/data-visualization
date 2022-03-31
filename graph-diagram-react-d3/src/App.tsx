@@ -35,7 +35,7 @@ function App() {
       .data(nodes)
       .enter()
       .append('circle')
-      .attr('fill', 'gray')
+      .attr('fill', (node) => node.color)
       .attr('r', (node) => node.size)
 
     const text = svgContainer
@@ -64,6 +64,8 @@ function App() {
         .attr('y2', (link) => link.target.y)
     })
   }, [nodes])
+
+  console.log({ links })
 
   return <svg width={width} height={height} ref={ref}></svg>
 }
