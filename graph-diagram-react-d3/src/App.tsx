@@ -38,6 +38,13 @@ function App() {
       .attr('fill', (node) => node.color)
       .attr('r', (node) => node.size)
 
+    const lines = svgContainer
+      .selectAll('line')
+      .data(links)
+      .enter()
+      .append('line')
+      .attr('stroke', (link) => link.color || 'black')
+
     const text = svgContainer
       .selectAll('text')
       .data(nodes)
@@ -46,13 +53,6 @@ function App() {
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'middle')
       .text((node) => node.id)
-
-    const lines = svgContainer
-      .selectAll('line')
-      .data(links)
-      .enter()
-      .append('line')
-      .attr('stroke', (link) => link.color || 'black')
 
     simulation.on('tick', () => {
       circles.attr('cx', (node) => node.x).attr('cy', (node) => node.y)
