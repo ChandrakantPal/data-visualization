@@ -27,6 +27,7 @@ const addChildNode = (
   distance = DEFAULT_DISTANCE
 ) => {
   childNode.size = size
+  childNode.color = parentNode.color
   nodes.push(childNode)
   links.push({
     source: parentNode,
