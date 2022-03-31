@@ -50,6 +50,7 @@ const connectMainNodes = (source: Node, target: Node) => {
     source,
     target,
     distance: MAIN_NODE_DISTANCE,
+    color: source.color,
   })
 }
 
