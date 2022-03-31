@@ -6,6 +6,7 @@ export interface Node {
   vy?: number
   x?: number
   y?: number
+  color?: string
 }
 
 export interface Link {
