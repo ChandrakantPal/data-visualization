@@ -32,6 +32,7 @@ const addChildNode = (
     source: parentNode,
     target: childNode,
     distance,
+    color: parentNode.color,
   })
 }
 
