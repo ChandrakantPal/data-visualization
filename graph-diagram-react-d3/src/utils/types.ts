@@ -14,4 +14,5 @@ export interface Link {
   index?: number
   source?: Node
   target?: Node
+  color?: string
 }
