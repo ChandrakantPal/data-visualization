@@ -16,6 +16,7 @@ let i = 0
 
 const addMainNode = (node: Node) => {
   node.size = MAIN_NODE_SIZE
+  node.color = colors[i++][1]
   nodes.push(node)
 }
 
