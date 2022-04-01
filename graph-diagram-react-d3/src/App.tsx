@@ -61,6 +61,7 @@ function App() {
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'middle')
+      .style('pointer-events', 'none')
       .text((node) => node.id)
 
     simulation.on('tick', () => {
