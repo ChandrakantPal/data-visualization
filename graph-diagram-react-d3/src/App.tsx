@@ -73,7 +73,7 @@ function App() {
         .attr('x2', (link) => link.target.x)
         .attr('y2', (link) => link.target.y)
     })
-  }, [nodes])
+  }, [nodes, links])
 
   console.log({ links })
 
