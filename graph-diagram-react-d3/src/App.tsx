@@ -1,5 +1,6 @@
 import './App.css'
 import {
+  drag,
   forceCenter,
   forceLink,
   forceManyBody,
@@ -29,6 +30,13 @@ function App() {
         forceLink(links).distance((link) => link.distance)
       )
       .force('center', forceCenter(centerX, centerY))
+
+    const dragInteraction = drag().on('drag', (event, node) => {
+      node.fx = event.x
+      node.fy = event.y
+      simulation.alpha(1)
+      simulation.restart()
+    })
 
     const circles = svgContainer
       .selectAll('circle')
