@@ -38,6 +38,13 @@ function App() {
       simulation.restart()
     })
 
+    const lines = svgContainer
+      .selectAll('line')
+      .data(links)
+      .enter()
+      .append('line')
+      .attr('stroke', (link) => link.color || 'black')
+
     const circles = svgContainer
       .selectAll('circle')
       .data(nodes)
@@ -46,13 +53,6 @@ function App() {
       .attr('fill', (node) => node.color)
       .attr('r', (node) => node.size)
       .call(dragInteraction)
-
-    const lines = svgContainer
-      .selectAll('line')
-      .data(links)
-      .enter()
-      .append('line')
-      .attr('stroke', (link) => link.color || 'black')
 
     const text = svgContainer
       .selectAll('text')
