@@ -75,8 +75,6 @@ function App() {
     })
   }, [nodes, links])
 
-  console.log({ links })
-
   return <svg width={width} height={height} ref={ref}></svg>
 }
 
