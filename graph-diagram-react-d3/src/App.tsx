@@ -14,7 +14,7 @@ const width = window.innerWidth
 const height = window.innerHeight
 
 function App() {
-  const ref = useRef()
+  const ref = useRef(null)
 
   useEffect(() => {
     const svgContainer = select(ref.current)
