@@ -45,6 +45,7 @@ function App() {
       .append('circle')
       .attr('fill', (node) => node.color)
       .attr('r', (node) => node.size)
+      .call(dragInteraction)
 
     const lines = svgContainer
       .selectAll('line')
