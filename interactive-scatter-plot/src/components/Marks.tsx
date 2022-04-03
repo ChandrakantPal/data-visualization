@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import { Flower } from '../utils/types'
 
 const Marks: FC<{
-  data: any
+  data: Flower[]
   yScale: any
   xScale: any
   colorScale: any
@@ -20,17 +21,21 @@ const Marks: FC<{
   colorValue,
   tooltipFormat,
   circleRadius = 10,
-}) =>
-  data.map((d: any) => (
-    <circle
-      className="mark"
-      cx={xScale(xValue(d))}
-      cy={yScale(yValue(d))}
-      fill={colorScale(colorValue(d))}
-      r={circleRadius}
-    >
-      <title>{tooltipFormat(xValue(d))}</title>
-    </circle>
-  ))
+}) => (
+  <>
+    {data.map((d, i) => (
+      <circle
+        key={`${d.petal_length * d.petal_width}${i}`}
+        className="mark"
+        cx={xScale(xValue(d))}
+        cy={yScale(yValue(d))}
+        fill={colorScale(colorValue(d))}
+        r={circleRadius}
+      >
+        <title>{tooltipFormat(xValue(d))}</title>
+      </circle>
+    ))}
+  </>
+)
 
 export default Marks
