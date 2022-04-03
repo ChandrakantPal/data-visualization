@@ -9,6 +9,7 @@ import Marks from './components/Marks'
 import { useState } from 'react'
 import ReactDropdown from 'react-dropdown'
 import ColorLegend from './components/ColorLegend'
+import { Flower } from './utils/types'
 
 const csvUrl =
   'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv'
@@ -59,10 +60,10 @@ const App = () => {
   const yValue = (d: any) => d[yAttribute]
   const yAxisLabel = getLabel(yAttribute)
 
-  const colorValue = (d: any) => d.species
+  const colorValue = (d: Flower) => d.species
   const colorLegendLabel = 'Species'
 
-  const filteredData = data.filter((d: any) => hoveredValue === colorValue(d))
+  const filteredData = data.filter((d) => hoveredValue === colorValue(d))
 
   const circleRadius = 7
 
