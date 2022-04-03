@@ -8,8 +8,8 @@ import Marks from './components/Marks'
 const csvUrl =
   'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
 
-const width = 960
-const height = 500
+const width = window.innerWidth
+const height = window.innerHeight
 const margin = { top: 20, right: 30, bottom: 65, left: 220 }
 const xAxisLabelOffset = 50
 
