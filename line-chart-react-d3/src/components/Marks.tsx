@@ -28,8 +28,13 @@ const Marks: FC<{
         .y((d) => yScale(yValue(d)))
         .curve(curveNatural)(data)}`}
     />
-    {data.map((d: any) => (
-      <circle cx={xScale(xValue(d))} cy={yScale(yValue(d))} r={circleRadius}>
+    {data.map((d) => (
+      <circle
+        key={`${d.timestamp}`}
+        cx={xScale(xValue(d))}
+        cy={yScale(yValue(d))}
+        r={circleRadius}
+      >
         <title>{tooltipFormat(xValue(d))}</title>
       </circle>
     ))}
