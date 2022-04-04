@@ -1,8 +1,9 @@
 import { line, curveNatural } from 'd3'
 import { FC } from 'react'
+import { DataType } from '../utils/type'
 
 const Marks: FC<{
-  data: any
+  data: DataType[]
   yScale: any
   xScale: any
   xValue: any
