@@ -9,7 +9,7 @@ const csvUrl =
   'https://gist.githubusercontent.com/curran/90240a6d88bdb1411467b21ea0769029/raw/7d4c3914cc6a29a7f5165f7d5d82b735d97bcfe4/week_temperature_sf.csv'
 
 const width = window.innerWidth
-const height = 500
+const height = window.innerHeight
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
 const yAxisLabelOffset = 45
