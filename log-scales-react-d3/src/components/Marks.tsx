@@ -1,7 +1,8 @@
 import { FC } from 'react'
+import { DataType } from '../utils/type'
 
 const Marks: FC<{
-  data: any
+  data: DataType[]
   yScale: any
   xScale: any
   tooltipFormat: any
