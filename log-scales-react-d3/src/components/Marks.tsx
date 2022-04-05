@@ -10,8 +10,9 @@ const Marks: FC<{
   xValue: any
   yValue: any
 }> = ({ data, xScale, yScale, tooltipFormat, circleRadius, xValue, yValue }) =>
-  data.map((d: any) => (
+  data.map((d) => (
     <circle
+      key={`${d['Reported Date']}`}
       className="mark"
       cx={xScale(xValue(d))}
       cy={yScale(yValue(d))}
