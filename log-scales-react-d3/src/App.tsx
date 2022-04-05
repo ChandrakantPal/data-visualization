@@ -49,8 +49,6 @@ const App = () => {
     .domain([1, max(data, yValue)])
     .range([innerHeight, 0])
 
-  console.log(extent(data, yValue))
-
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
