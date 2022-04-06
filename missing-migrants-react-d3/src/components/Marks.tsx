@@ -18,8 +18,9 @@ const Marks: FC<{
         .y((d) => yScale(yValue(d)))
         .curve(curveNatural)(binnedData)}`}
     /> */}
-    {binnedData.map((d) => (
+    {binnedData.map((d, i) => (
       <rect
+        key={`${d.x0}${i}`}
         x={xScale(d.x0)}
         y={yScale(d.y)}
         width={xScale(d.x1) - xScale(d.x0)}
