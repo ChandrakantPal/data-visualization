@@ -1,8 +1,9 @@
 import { line, curveNatural } from 'd3'
 import { FC } from 'react'
+import { BinnedDataType } from '../utils/type'
 
 const Marks: FC<{
-  binnedData: any
+  binnedData: BinnedDataType[]
   yScale: any
   xScale: any
   tooltipFormat: any
@@ -17,7 +18,7 @@ const Marks: FC<{
         .y((d) => yScale(yValue(d)))
         .curve(curveNatural)(binnedData)}`}
     /> */}
-    {binnedData.map((d: any) => (
+    {binnedData.map((d) => (
       <rect
         x={xScale(d.x0)}
         y={yScale(d.y)}
