@@ -62,8 +62,6 @@ const App = () => {
     .range([innerHeight, 0])
     .nice()
 
-  console.log({ binnedData })
-
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
