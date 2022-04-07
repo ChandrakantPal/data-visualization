@@ -1,5 +1,6 @@
 import { geoNaturalEarth1, geoPath, geoGraticule } from 'd3'
 import { FC } from 'react'
+import { DataType } from '../utils/types'
 
 const projection = geoNaturalEarth1()
 const path = geoPath(projection)
@@ -7,7 +8,7 @@ const graticule = geoGraticule()
 
 const Marks: FC<{
   worldAtlas: any
-  data: any
+  data: DataType[]
   sizeScale: any
   sizeValue: any
 }> = ({ worldAtlas: { land, interiors }, data, sizeScale, sizeValue }) => {
