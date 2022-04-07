@@ -20,9 +20,16 @@ const Marks: FC<{
         <path className="land" d={`${path(feature)}`} />
       ))}
       {/* <path className="interiors" d={`${path(interiors)}`} /> */}
-      {data.map((d: any) => {
+      {data.map((d, i) => {
         const [x, y] = projection(d.coords)
-        return <circle cx={x} cy={y} r={sizeScale(sizeValue(d))} />
+        return (
+          <circle
+            key={`${d['Reported Date']}${i}`}
+            cx={x}
+            cy={y}
+            r={sizeScale(sizeValue(d))}
+          />
+        )
       })}
     </g>
   )
