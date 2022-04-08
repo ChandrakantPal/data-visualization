@@ -11,6 +11,7 @@ import {
   timeMonths,
 } from 'd3'
 import { FC, useEffect, useMemo, useRef } from 'react'
+import { DataType } from '../../utils/types'
 import AxisBottom from './AxisBottom'
 import AxisLeft from './AxisLeft'
 import Marks from './Marks'
@@ -26,7 +27,7 @@ const yValue = (d: any) => d['Total Dead and Missing']
 const yAxisLabel = 'Total Dead and Missing'
 
 const DateHistogram: FC<{
-  data: any
+  data: DataType[]
   height: number
   width: number
   setBrushExtent: any
