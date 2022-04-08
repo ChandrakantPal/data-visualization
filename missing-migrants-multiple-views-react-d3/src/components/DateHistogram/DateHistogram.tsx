@@ -81,6 +81,8 @@ const DateHistogram: FC<{
     })
   }, [innerHeight, innerWidth])
 
+  console.log({ binnedData })
+
   return (
     <>
       <rect width={width} height={height} fill="white" />
