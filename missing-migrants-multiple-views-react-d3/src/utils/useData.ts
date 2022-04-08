@@ -1,8 +1,9 @@
 import { csv } from 'd3'
 import { useEffect, useState } from 'react'
+import { DataType } from './types'
 
 export const useData = (csvUrl: string) => {
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState<DataType[]>([])
 
   const row = (d: any) => {
     d.coords = d['Location Coordinates']
