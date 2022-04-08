@@ -8,7 +8,7 @@ const maxRadius = 15
 
 const BubbleMap: FC<{
   data: DataType[]
-  filteredData: any
+  filteredData: DataType[]
   worldAtlas: any
 }> = ({ data, filteredData, worldAtlas }) => {
   const sizeScale = useMemo(
