@@ -1,15 +1,16 @@
 import { max, scaleSqrt } from 'd3'
 import { FC, useMemo } from 'react'
+import { DataType } from '../../utils/types'
 import Marks from './Marks'
 
 const sizeValue = (d: any) => d['Total Dead and Missing']
 const maxRadius = 15
 
-const BubbleMap: FC<{ data: any; filteredData: any; worldAtlas: any }> = ({
-  data,
-  filteredData,
-  worldAtlas,
-}) => {
+const BubbleMap: FC<{
+  data: DataType[]
+  filteredData: any
+  worldAtlas: any
+}> = ({ data, filteredData, worldAtlas }) => {
   const sizeScale = useMemo(
     () =>
       scaleSqrt()
