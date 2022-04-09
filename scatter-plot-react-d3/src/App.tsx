@@ -43,8 +43,6 @@ const App = () => {
     .domain(extent(data, yValue))
     .range([0, innerHeight])
 
-  console.log({ data })
-
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
