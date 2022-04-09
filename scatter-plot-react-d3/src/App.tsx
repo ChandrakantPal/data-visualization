@@ -8,7 +8,7 @@ import Marks from './components/Marks'
 const csvUrl =
   'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv'
 
-const width = 960
+const width = window.innerWidth
 const height = 500
 const margin = { top: 20, right: 30, bottom: 65, left: 90 }
 const xAxisLabelOffset = 50
@@ -42,6 +42,8 @@ const App = () => {
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
     .range([0, innerHeight])
+
+  console.log({ data })
 
   return (
     <svg width={width} height={height}>
