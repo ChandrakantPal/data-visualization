@@ -19,8 +19,9 @@ const Marks: FC<{
   circleRadius = 10,
 }) => (
   <>
-    {data.map((d: any) => (
+    {data.map((d, i) => (
       <circle
+        key={`${d.petal_length}${i}`}
         className="mark"
         cx={xScale(xValue(d))}
         cy={yScale(yValue(d))}
