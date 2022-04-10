@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { csv } from 'd3-fetch'
 import './App.css'
-import { DSVRowArray } from 'd3-dsv'
 import { arc, pie } from 'd3'
 import { DataType } from './utils/types'
 
