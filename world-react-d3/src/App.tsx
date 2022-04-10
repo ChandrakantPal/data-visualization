@@ -5,7 +5,7 @@ import Marks from './components/Marks'
 
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
-const width = 960
+const width = window.innerWidth
 const height = 500
 
 const App = () => {
@@ -14,6 +14,8 @@ const App = () => {
   if (!data) {
     return <pre>Loading...</pre>
   }
+
+  console.log({ data })
 
   return (
     <svg width={width} height={height}>
