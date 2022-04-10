@@ -6,7 +6,7 @@ import Marks from './components/Marks'
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
 const width = window.innerWidth
-const height = 500
+const height = window.innerWidth
 
 const App = () => {
   const data = useData(jsonUrl)
