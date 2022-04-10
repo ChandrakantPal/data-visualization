@@ -27,8 +27,6 @@ const App = () => {
 
   const colorPie = pie().value(1)
 
-  console.log({ data })
-
   return (
     <div className="App">
       <svg width={width} height={height}>
