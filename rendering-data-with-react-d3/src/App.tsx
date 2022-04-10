@@ -3,6 +3,7 @@ import { csv } from 'd3-fetch'
 import './App.css'
 import { DSVRowArray } from 'd3-dsv'
 import { arc, pie } from 'd3'
+import { DataType } from './utils/types'
 
 const App = () => {
   const width = window.innerWidth
@@ -10,7 +11,7 @@ const App = () => {
   const centerX = width / 2
   const centerY = height / 2
 
-  const [data, setData] = useState<DSVRowArray<string> | null>(null)
+  const [data, setData] = useState<DataType[]>([])
 
   useEffect(() => {
     const csvUrl =
@@ -25,6 +26,8 @@ const App = () => {
   }
 
   const colorPie = pie().value(1)
+
+  console.log({ data })
 
   return (
     <div className="App">
