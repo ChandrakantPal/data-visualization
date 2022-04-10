@@ -33,9 +33,9 @@ const App = () => {
     <div className="App">
       <svg width={width} height={height}>
         <g transform={`translate(${centerX},${centerY})`}>
-          {colorPie(data)?.map((d) => (
+          {colorPie(data)?.map((d, i) => (
             <path
-              key={d.data['RGB hex value']}
+              key={`${d.data['RGB hex value']}${i}`}
               fill={d.data['RGB hex value']}
               d={pieArc(d)}
             />
