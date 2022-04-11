@@ -3,6 +3,7 @@ import { max, scaleSqrt } from 'd3'
 import { useWorldAtlas } from './utils/useWorldAtlas'
 import Marks from './components/Marks'
 import { useCities } from './utils/useCities'
+import { CityDataType } from './utils/type'
 
 const jsonUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-50m.json'
 
@@ -20,7 +21,7 @@ const App = () => {
     return <pre>Loading...</pre>
   }
 
-  const sizeValue = (d: any) => d.population
+  const sizeValue = (d: CityDataType) => d.population
   const maxRadius = 15
 
   const sizeScale = scaleSqrt()
