@@ -27,8 +27,6 @@ const App = () => {
     .domain([0, max(cities, sizeValue)])
     .range([0, maxRadius])
 
-  console.log({ cities })
-
   return (
     <svg width={width} height={height}>
       <Marks
