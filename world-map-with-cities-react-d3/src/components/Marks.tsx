@@ -16,8 +16,8 @@ const Marks: FC<{
     <g className="marks">
       <path className="sphere" d={`${path({ type: 'Sphere' })}`} />
       <path className="graticules" d={`${path(graticule())}`} />
-      {land.features.map((feature: any) => (
-        <path className="land" d={`${path(feature)}`} />
+      {land.features.map((feature: any, i: number) => (
+        <path key={i} className="land" d={`${path(feature)}`} />
       ))}
       {/* <path className="interiors" d={`${path(interiors)}`} /> */}
       {cities.map((d, i) => {
